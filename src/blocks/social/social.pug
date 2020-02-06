@@ -1,0 +1,38 @@
+//- Все примеси в этом файле должны начинаться c имени блока ( social )
+
+mixin social( mods )
+
+  //- Принимает:
+      mods {string} - модификаторы
+
+  //- Вызов:
+      +social( mods )
+
+  -
+    //- класс блока
+    const className = 'social';
+
+    //- список модификаторов
+    const allMods = '';
+    if ( typeof mods !== 'undefined' && mods ) {
+      let modsList = mods.split( ',' );
+      for ( let i = 0; i < modsList.length; i++ ) {
+        allMods += ' ' + className + '--' + modsList[i].trim();
+      }
+    }
+
+  //- Данные списка
+  include social.data.pug
+
+  section( class=className + allMods )&attributes( attributes )
+    ul( class=className + '__list' )
+      each item in socialInfoData
+        if ( item.title )
+          li( class=className + '__item ' + className + '__item--' + item.title.toLowerCase() )
+            a( class=className + '__item-link', href='#', target='_blank', rel='nofollow noreferrer' )
+              != item.icon
+              span( class=className + '__item-text' )!= item.title
+                //- svg( width=icon.width, height=icon.height, viewBox='0 0 ' + icon.width + ' ' + icon.height )
+                //-  use( xlink:href=setting.iconSrc + 'sprite.svg#icon-' + icon.name )
+        else
+          li( class=className + '__item' ) Не указано имя соц. сети

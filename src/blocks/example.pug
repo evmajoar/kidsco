@@ -1,0 +1,24 @@
+//- Все примеси в этом файле должны начинаться c имени блока ( journal )
+
+mixin journal( mods )
+
+  //- Принимает:
+      mods {string} - модификаторы
+
+  //- Вызов:
+      +journal( mods )
+
+  -
+    //- класс блока
+      const className = 'example';
+
+    //- список модификаторов
+      const allMods = '';
+      if ( typeof mods !== 'undefined' && mods ) {
+        let modsList = mods.split( ',' );
+        for ( let i = 0; i < modsList.length; i++ ) {
+          allMods += ' ' + className + '--' + modsList[i].trim();
+        }
+      }
+
+  example( class=className + allMods )

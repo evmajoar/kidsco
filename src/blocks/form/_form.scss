@@ -1,0 +1,20 @@
+// В этом файле должны быть стили для БЭМ-блока form, его элементов,
+// модификаторов, псевдоселекторов, псевдоэлементов, @media-условий...
+
+@import "../../libraries/variables";
+@import "../../libraries/mixins";
+
+.form {
+  $block-name: &; // #{$block-name}__element
+
+  &__fieldset {
+    margin: 0;
+    border: 0;
+    padding: 0;
+    position: relative;
+  }
+
+  &__legend {
+    @include hide-text;
+  }
+}

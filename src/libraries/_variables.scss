@@ -1,0 +1,51 @@
+// Ширины
+$screen-xs: 0;
+$screen-sm: 480px;
+$screen-md: 768px;
+$screen-lg: 992px;
+$screen-xl: 1200px;
+$screen-xxl: 1326px;
+
+// Модульная сетка
+$grid-columns: 12;
+$grid-gutter-width: 48px;
+
+// Базовые цвета https://colorscheme.ru/color-converter.html
+$white: hsl(0, 0%, 100%);
+$black: hsl(0, 0%, 0%);
+$purple: #332638;
+$gray: #aeb8c2;
+$gray-light: #e6ebf0;
+
+// https://brandcolors.net/
+$color-vkontakte: #4a76a8;
+$color-facebook: #4267b2;
+$color-twitter: #40A2F5;
+$color-behance: #1769ff;
+$color-instagram: linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%);
+$color-telegram: #0088cc;
+$color-viber: #8f5db7;
+$color-whatsapp: #25d366;
+$color-skype: #00aff0;
+
+$color-main: hsl(208, 98%, 43%);
+$color-success: hsl(120, 39%, 54%);
+$color-danger: hsl(2, 64%, 58%);
+$color-warning: hsl(35, 84%, 62%);
+
+// Семантические цвета
+$body-background: $white;
+$text-color: $purple;
+
+// Базовая типографика
+$font-size: 13px;
+$line-height: 20 / 13;
+$line-height--xxl: 24 / 14;
+$font-family: 'AvertaCY', 'Helvetica Neue', 'Arial', sans-serif;
+
+// Разное
+$text-opacity: .5;
+$button-opacity: .5;
+
+$images-dir: '../images/';
+$fonts-dir: '../fonts/';

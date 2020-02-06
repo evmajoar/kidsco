@@ -1,0 +1,23 @@
+// В этом файле должны быть стили для БЭМ-блока logo, его элементов,
+// модификаторов, псевдоселекторов, псевдоэлементов, @media-условий...
+
+@import "../../libraries/variables";
+@import "../../libraries/mixins";
+
+.logo {
+  $block-name: &; // #{$block-name}__element
+
+  display: inline-block;
+  white-space: nowrap;
+  margin: 0;
+
+  img {
+    width: 110px;
+    height: 21px;
+
+    @media (min-width: $screen-xxl) {
+      width: 176px;
+      height: auto;
+    }
+  }
+}

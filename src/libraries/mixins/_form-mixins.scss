@@ -1,0 +1,31 @@
+@import "../variables";
+
+@mixin placeholder {
+  &::-webkit-input-placeholder {
+    @content;
+  }
+  &:-moz-placeholder {
+    @content;
+  }
+  &::-moz-placeholder {
+    @content;
+  }
+  &:-ms-input-placeholder {
+    @content;
+  }
+}
+
+@mixin placeholder-hidden {
+  &:focus::-webkit-input-placeholder {
+    color: transparent;
+  }
+  &:focus::-moz-placeholder {
+    color: transparent;
+  }
+  &:focus:-moz-placeholder {
+    color: transparent;
+  }
+  &:focus:-ms-input-placeholder {
+    color: transparent;
+  }
+}

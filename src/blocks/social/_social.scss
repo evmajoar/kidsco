@@ -1,0 +1,71 @@
+// В этом файле должны быть стили для БЭМ-блока social, его элементов,
+// модификаторов, псевдоселекторов, псевдоэлементов, @media-условий...
+
+@import "../../libraries/variables";
+@import "../../libraries/mixins";
+
+.social {
+  &__list {
+    @include list-reset;
+    display: flex;
+    align-items: start;
+    justify-content: center;
+  }
+
+
+  &__item {
+    margin-right: 15px;
+
+    &-link {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 32px;
+      width: 32px;
+
+      @media (min-width: $screen-xxl) {
+        border: 1px solid transparentize($white, .52);
+      }
+
+      svg {
+        fill: $white;
+      }
+    }
+
+    &-text {
+      @include hide-text;
+    }
+
+    &:last-child {
+      margin-right: 0;
+    }
+
+    &--instagram {
+      svg {
+        width: 16px;
+        height: 16px;
+      }
+    }
+
+    &--facebook {
+      svg {
+        width: 8px;
+        height: 16px;
+      }
+    }
+
+    &--vkontakte {
+      svg {
+        width: 16px;
+        height: 9px;
+      }
+    }
+
+    &--twitter {
+      svg {
+        width: 16px;
+        height: 14px;
+      }
+    }
+  }
+}

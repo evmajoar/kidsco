@@ -1,0 +1,17 @@
+// В этом файле должны быть стили для БЭМ-блока page-main, его элементов,
+// модификаторов, псевдоселекторов, псевдоэлементов, @media-условий...
+
+@import "../../libraries/variables";
+@import "../../libraries/mixins";
+
+.page-main {
+  &__wrapper {
+    padding-top: 13px;
+    padding-bottom: 13px;
+
+    @media (min-width: $screen-xxl) {
+      padding-top: 30px;
+      padding-bottom: 30px;
+    }
+  }
+}

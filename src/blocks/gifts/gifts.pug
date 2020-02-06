@@ -1,0 +1,31 @@
+//- Все примеси в этом файле должны начинаться c имени блока ( gifts )
+
+mixin gifts( props, mods )
+
+  -
+    //- класс блока
+    var className = 'gifts';
+
+    //- список модификаторов
+    var allMods = '';
+    if ( typeof mods !== 'undefined' && mods ) {
+      var modsList = mods.split( ',' );
+      for ( var i = 0; i < modsList.length; i++ ) {
+        allMods += ' ' + className + '--' + modsList[i].trim();
+      }
+    }
+
+  section( class=className + allMods )
+
+    //- описание
+    div( class=className + '__description' )
+
+      a( class=className + '__wrapper', href='#' )
+        h3.title( class=className + '__title' )= props.title
+
+      span.category( class=className + '__category' ) Подарки
+
+    //- изображение
+    picture( class=className + '__picture' )
+      source( srcset=setting.imagesSrc + props.picture.webp, type='image/webp' )
+      img( src=setting.imagesSrc + props.picture.jpg, alt=props.title )

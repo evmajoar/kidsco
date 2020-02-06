@@ -1,0 +1,141 @@
+// В этом файле должны быть стили для БЭМ-блока button, его элементов,
+// модификаторов, псевдоселекторов, псевдоэлементов, @media-условий...
+
+@import "../../libraries/variables";
+@import "../../libraries/mixins";
+
+.button {
+  $block-name: &; // #{$block-name}__element
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  font: 600 14px / #{$line-height} #{$font-size};
+  color: inherit;
+  text-decoration: none;
+  text-transform: none;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  user-select: none;
+  background-color: transparent;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+
+  // &:visited {
+  //   color: $text-color;
+  // }
+
+  //&:active,
+  //&:focus {
+  //  @include field-focus;
+  //}
+
+
+  //&--pink {
+  //  background-color: $color-pink;
+  //  color: $text-color-revers;
+  //
+  //  &:active {
+  //    background-color: $gray-darker;
+  //  }
+  //
+  //  &:hover {
+  //    @media (min-width: $screen-xl) {
+  //      background-color: $gray-darker;
+  //    }
+  //  }
+  //}
+  //
+  //
+  //&--grey {
+  //  background-color: $gray-darker;
+  //  color: $white;
+  //
+  //  &:active {
+  //    background-color: $color-pink;
+  //  }
+  //
+  //  &:hover {
+  //    @media (min-width: $screen-xl) {
+  //      background-color: $color-pink;
+  //    }
+  //  }
+  //}
+
+  &--small-square {
+    width: 38px;
+    height: 36px;
+    background-color: transparent;
+
+    @media (min-width: $screen-xxl) {
+      background-color: #eeecef;
+    }
+
+    span {
+      @include hide-text;
+    }
+  }
+
+  &--arrow {
+    display: block;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background-color: $white;
+    font-size: 0;
+
+    span {
+      @include hide-text;
+    }
+
+    svg {
+      width: 6px;
+      height: 12px;
+      fill: none;
+      stroke: #332638;
+    }
+  }
+
+  &--link-more {
+    display: inline-flex;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: .5px;
+    text-transform: uppercase;
+    color: $gray;
+
+    svg {
+      margin-left: 15px;
+    }
+
+    .icon-arrow {
+      display: none;
+      stroke: $gray;
+
+      @media (min-width: $screen-xxl) {
+        display: block;
+        transform: rotate(180deg);
+      }
+    }
+
+    .icon-arrow-long {
+      fill: $gray;
+
+      @media (min-width: $screen-xxl) {
+        display: none;
+      }
+    }
+  }
+
+  &--disabled,
+  &:disabled {
+    opacity: $button-opacity;
+    cursor: not-allowed;
+
+    @at-root a.btn--disabled {
+      pointer-events: none;
+    }
+  }
+}

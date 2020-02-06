@@ -1,0 +1,71 @@
+// В этом файле должны быть стили для БЭМ-блока gifts, его элементов
+// модификаторов, псевдоселекторов, псевдоэлементов, @media-условий...
+
+@import "../../libraries/variables";
+@import "../../libraries/mixins";
+
+.gifts {
+  $block-name: &; // #{$block-name}__element
+
+  display: flex;
+  flex-direction: column;
+
+  @media (min-width: $screen-xxl) {
+    width: calc( 100% - #{$grid-gutter-width} );
+  }
+
+  &__description {
+    display: flex;
+    flex-direction: column;
+    padding: 15px 10px 35px;
+    border-bottom: 1px solid #ecf0f4;
+
+    @media (min-width: $screen-xxl) {
+      border-bottom: 0;
+      padding: 46px 10px 0;
+    }
+  }
+
+  &__title, &__category {
+    text-align: center;
+  }
+
+  &__title {
+    margin-top: 10px;
+  }
+
+  &__category {
+    order: -1;
+  }
+
+  &__picture {
+    order: -1;
+    max-width: 290px;
+    width: 100%;
+
+    @media (min-width: $screen-xxl) {
+      max-width: 352px;
+      flex-shrink: 0;
+    }
+  }
+
+  &--direction-lr {
+    margin-top: 25px;
+
+    @media (min-width: $screen-xxl) {
+      grid-column: 9 / -1;
+      justify-self: end;
+      margin-top: 0;
+    }
+  }
+
+  &--direction-rl {
+    margin-top: 25px;
+    order: -1;
+
+    @media (min-width: $screen-xxl) {
+      grid-column: 1 / 5;
+      margin-top: 0;
+    }
+  }
+}

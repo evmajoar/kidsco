@@ -1,0 +1,46 @@
+// Общие стили тегов. Подключение шрифтов. Типографика.
+@import "fonts";
+@import "mixins";
+@import "variables";
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  box-sizing: inherit;
+}
+
+body {
+  background-color: $body-background;
+  color: $text-color;
+  font: #{ $font-size }/#{ $line-height } #{ $font-family };
+  min-height: 100vh;
+  word-break: break-word;
+
+  @media (min-width: $screen-xxl) {
+    font-size: $font-size + 1;
+    line-height: $line-height--xxl;
+  }
+}
+
+a {
+  color: $purple;
+  text-decoration: none;
+}
+
+h1, h2, h3, h4, h5, h6, p, ul, ol {
+  margin: 0;
+}
+
+ul, ol {
+  @include list-reset;
+}
+
+img {
+  width: 100%;
+  height: auto;
+  vertical-align: bottom;
+}

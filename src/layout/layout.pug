@@ -1,0 +1,45 @@
+//- Шаблон страницы
+include ../blocks/form/form
+include ../blocks/field-text/field-text
+include ../blocks/button/button
+include ../blocks/info/info
+include ../blocks/page-footer/page-footer
+include ../blocks/logo/logo
+include ../blocks/social/social
+
+doctype html
+
+include layout.data.pug
+
+html( class="page", lang=lang )
+  head
+    meta( charset=charset )
+    meta( name="viewport", content="width=device-width, initial-scale=1" )
+    meta( name="language", content=lang.toUpperCase() )
+    meta( name="format-detection", content="telephone=no" )
+    meta( name="format-detection", content="date=no" )
+    meta( name="format-detection", content="email=no" )
+    meta( name="notranslate", content="google" )
+
+    block meta
+
+    block head
+      link( rel="dns-prefetch" href="//cdnjs.cloudflare.com/" )
+      link( rel="preconnect" href="//cdnjs.cloudflare.com/" )
+      link( rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" )
+
+  body
+    noscript Пожалуйста, включите JavaScript и перезагрузите страницу.
+
+    div.page__inner
+      header.page-header
+        block header
+
+      main.page-main
+        block main
+
+      div.page__footer
+        +page-footer()
+
+    block foot
+      script( src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" )

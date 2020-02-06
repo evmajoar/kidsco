@@ -1,0 +1,88 @@
+// В этом файле должны быть стили для БЭМ-блока journal, его элементов,
+// модификаторов, псевдоселекторов, псевдоэлементов, @media-условий...
+
+@import "../../libraries/variables";
+@import "../../libraries/mixins";
+
+.journal {
+  $block-name: &; // #{$block-name}__element
+
+  display: flex;
+  flex-direction: column;
+
+  @media (min-width: $screen-xxl) {
+    flex-direction: row;
+    width: calc( 100% + #{$grid-gutter-width} );
+  }
+
+  &__picture {
+    order: -1;
+    max-width: 290px;
+    width: 100%;
+
+    @media (min-width: $screen-xxl) {
+      max-width: 512px;
+      flex-shrink: 0;
+    }
+  }
+
+  &__title {
+    margin-top: 10px;
+
+    @media (min-width: $screen-xxl) {
+      margin-top: 30px;
+    }
+  }
+
+  &__description {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid $gray-light;
+    border-top: 0;
+    padding: 15px 24px 21px;
+
+    @media (min-width: $screen-xxl) {
+      border-top: 1px solid $gray-light;
+      border-left: 0;
+      padding: $grid-gutter-width;
+    }
+  }
+
+  &__text {
+    margin-top: 12px;
+
+    @media (min-width: $screen-xxl) {
+      margin-top: 24px;
+    }
+  }
+
+  &__more {
+    align-self: flex-start;
+    margin-top: 12px;
+
+    @media (min-width: $screen-xxl) {
+      margin-top: auto;
+    }
+  }
+
+  &--direction-lr {
+    @media (min-width: $screen-xxl) {
+      grid-column: 1 / 9;
+    }
+  }
+
+  &--direction-rl {
+    @media (min-width: $screen-xxl) {
+      grid-column: 5 / -1;
+      justify-self: end;
+    }
+
+    #{$block-name}__description {
+      @media (min-width: $screen-xxl) {
+        order: -1;
+        border-left: 1px solid $gray-light;
+        border-right: 0;
+      }
+    }
+  }
+}

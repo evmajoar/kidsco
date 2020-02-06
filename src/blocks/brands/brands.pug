@@ -1,0 +1,50 @@
+//- Все примеси в этом файле должны начинаться c имени блока ( brands )
+
+mixin brands( mods )
+
+  //- Принимает:
+      mods {string} - модификаторы
+
+  //- Вызов:
+      +brands()
+
+  -
+    //- класс блока
+    const className = 'brands';
+
+    //- список модификаторов
+    const allMods = '';
+    if ( typeof mods !== 'undefined' && mods ) {
+      const modsList = mods.split( ',' );
+      for ( let i = 0; i < modsList.length; i++ ) {
+        allMods = allMods + ' ' + className + '--' + modsList[i].trim();
+      }
+    }
+
+  //- Данные
+  include brands.data.pug
+
+  section( class=className + allMods )&attributes( attributes )
+    div.container( class=className + '__container' )
+
+      //- Заголовок (скрытый)
+      //- h2( class=className + '__title' ) Бренды
+
+      //- Слайдер
+      div.swiper-container( class=className + '__carousel' )
+        ul.swiper-wrapper( class=className + '__list' )
+          each item in brandsList
+            li.swiper-slide( class=className + '__item' )
+              picture
+                source( srcset=setting.imagesSrc + item.srcWP, type='image/webp' )
+                img( src=setting.imagesSrc + item.srcPNG, alt=item.title )
+
+        //- Пагинация
+        ul( class=className + '__pagination' )
+
+        //- Кнопки
+        p( class=className + '__arrows' )
+          +button( 'Предыдущий слайд', 'arrow' )( class=className + '__arrow ' + className + '__arrow--prev' )
+            include ../../theme/icons/arrow.data.pug
+          +button( 'Следующий слайд', 'arrow' )( class=className + '__arrow ' + className + '__arrow--next' )
+            include ../../theme/icons/arrow.data.pug

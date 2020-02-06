@@ -1,0 +1,121 @@
+// В этом файле должны быть стили для БЭМ-блока page-footer, его элементов,
+// модификаторов, псевдоселекторов, псевдоэлементов, @media-условий...
+
+@import "../../libraries/variables";
+@import "../../libraries/mixins";
+
+.page-footer {
+  background-color: $purple;
+  padding: 25px 0;
+  color: $white;
+  
+  @media (min-width: $screen-xl) {
+    padding: 16px 0;
+  }
+
+  &__container {
+    align-items: center;
+  }
+
+  &__copy {
+    font-size: 14px;
+    text-align: center;
+    margin: 15px 0 0;
+    order: 3;
+    color: $gray;
+    opacity: $text-opacity;
+
+    @media (min-width: $screen-xxl) {
+      order: -1;
+      grid-column: 1 / 3;
+
+      display: flex;
+      flex-direction: column;
+      text-align: left;
+      margin-top: 0;
+      font-weight: 300;
+    }
+
+    &-text {
+      @media (min-width: $screen-xxl) {
+        display: block;
+      }
+
+      &:first-child {
+        @media (min-width: $screen-xxl) {
+          margin-bottom: 5px;
+        }
+      }
+    }
+  }
+
+  &__info {
+    margin: 0 0 15px;
+    text-align: center;
+
+    &-title, &-link {
+      display: block;
+    }
+
+    &-title {
+      color: $gray;
+      opacity: $text-opacity;
+      font-size: 14px;
+
+      @media (min-width: $screen-xxl) {
+        margin-bottom: 5px;
+      }
+    }
+
+    &-link {
+      text-decoration: none;
+      font-size: 16px;
+      font-weight: 600;
+      color: $white;
+
+      @media (min-width: $screen-xxl) {
+        font-size: 14px;
+        font-weight: 300;
+      }
+    }
+
+    &--cooperation {
+      @media (min-width: $screen-xxl) {
+        grid-column: 3 / 5;
+      }
+    }
+
+    &--questions {
+      @media (min-width: $screen-xxl) {
+        grid-column: 5 / 7;
+      }
+    }
+
+    &--policy {
+      display: none;
+
+      @media (min-width: $screen-xxl) {
+        display: block;
+        grid-column: 7 / 10;
+        align-self: end;
+      }
+    }
+
+    @media (min-width: $screen-xxl) {
+      margin-bottom: 0;
+      text-align: left;
+    }
+  }
+
+  &__social {
+    margin-top: 10px;
+
+    @media (min-width: $screen-xxl) {
+      margin-top: 0;
+      grid-column: 10 / -1;
+
+      display: flex;
+      justify-content: flex-end;
+    }
+  }
+}

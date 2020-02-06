@@ -1,0 +1,54 @@
+// В этом файле должны быть стили для БЭМ-блока page, его элементов,
+// модификаторов, псевдоселекторов, псевдоэлементов, @media-условий...
+
+@import "../../libraries/variables";
+@import "../../libraries/mixins";
+
+.page {
+  &__inner {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    min-height: 100vh;
+  }
+
+  &__footer {
+    margin-top: auto;
+  }
+}
+
+.container {
+  display: grid;
+  align-items: start;
+  justify-content: start;
+  grid-template-columns: 1fr;
+  max-width: 320px;
+  margin: 0 auto;
+  padding: 0 ( ( $grid-gutter-width - 18) / 2 );
+  width: 100%;
+
+  @media (min-width: $screen-xxl) {
+    grid-template-columns: repeat( 12, 64px );
+    grid-column-gap: $grid-gutter-width;
+    max-width: ( ( 64 + 48 ) * $grid-columns ) - $grid-gutter-width;
+    padding: 0;
+  }
+}
+
+.title {
+  font-size: 20px;
+  line-height: 22px;
+
+  @media (min-width: $screen-xxl) {
+    font-size: 24px;
+    line-height: 28px;
+  }
+}
+
+.category {
+  font-size: 11px;
+  letter-spacing: .5px;
+  text-transform: uppercase;
+  color: $gray;
+  font-weight: 700;
+}

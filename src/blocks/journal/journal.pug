@@ -1,0 +1,40 @@
+//- Все примеси в этом файле должны начинаться c имени блока ( journal )
+
+mixin journal( props, mods )
+
+  -
+    //- класс блока
+    var className = 'journal';
+
+    //- список модификаторов
+    var allMods = '';
+    if ( typeof mods !== 'undefined' && mods ) {
+      var modsList = mods.split( ',' );
+      for ( var i = 0; i < modsList.length; i++ ) {
+        allMods += ' ' + className + '--' + modsList[i].trim();
+      }
+    }
+
+  section( class=className + allMods )
+
+    //- описание
+    div( class=className + '__description' )
+
+      //- категория
+      span.category( class=className + '__category' ) Журнал
+
+      //- заголовок
+      h2.title( class=className + '__title' )= props.title
+
+      //- текст
+      p( class=className + '__text' )= props.text
+
+      //- ссылка
+      +button( 'Читать статью', 'link-more' )( class=className + '__more', href='#' )
+        include ../../theme/icons/arrow.data.pug
+        include ../../theme/icons/arrow-long.data.pug
+
+    //- изображение
+    picture( class=className + '__picture' )
+      source( srcset=setting.imagesSrc + props.picture.webp, type='image/webp' )
+      img( src=setting.imagesSrc + props.picture.jpg, alt=props.title )

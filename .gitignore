@@ -1,0 +1,16 @@
+.idea/
+
+/node_modules
+
+/build
+
+/src/theme/sprites/
+
+package-lock.json
+
+*.ai
+*.psd
+*.pdf
+*.log
+
+Thumbs.db

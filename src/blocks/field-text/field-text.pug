@@ -1,0 +1,62 @@
+//- Все примеси в этом файле должны начинаться c имени блока ( field-text )
+
+mixin field-text( props )
+
+  //- Принимает:
+      props {
+        title: "" {string} - текст с названием (выводится над полем)
+        isTextarea: false {bool}   - флаг input/textarea
+        helpText: "" {string} - пояснение под полем
+        mods: "" {string} - модификаторы блока
+        val: "" {string} - текст в поле
+        attrs: {object} - любые атрибуты для input/textarea
+          type: {string}
+          placeholder: {string}
+
+  //- Вызов:
+      +field-text({
+        title: "Название",
+        isTextarea: true,
+        helpText: "Подсказка",
+        mods: "",
+        val: "",
+        attrs: {
+          name: "comment",
+        }
+      })
+
+  -
+    //- классы блока
+    var className = 'field-text';
+    var fieldName = className + '__name';
+    var fieldInput = className + '__input';
+    var fieldInputWrap = className + '__input-wrap';
+    var fieldHelpText = className + '__input-wrap';
+
+    if ( typeof props === 'undefined' ) {
+      var props = {};
+    }
+
+    // список модификаторов
+    var allMods = '';
+    if ( typeof props.mods !== 'undefined' && props.mods ) {
+      var modsList = props.mods.split( ',' );
+      for ( var i = 0; i < modsList.length; i++ ) {
+       allMods = allMods + ' ' + className + '--' + modsList[i].trim();
+      }
+    }
+
+  label( class=className + allMods )&attributes( attributes )
+
+    if ( typeof props.title !== 'undefined' && props.title )
+      span( class=fieldName )= props.title
+    span( class=fieldInputWrap )
+
+      if ( typeof props.isTextarea !== 'undefined' && props.isTextarea )
+        textarea( class=fieldInput )&attributes( props.attrs )= props.val
+      else
+        input( class=fieldInput, type=( typeof props.attrs !== 'undefined' && props.attrs.type ) ? props.attrs.type : 'text', value=props.val )&attributes( props.attrs )
+
+      if ( typeof props.helpText !== 'undefined' && props.helpText )
+        span( class=fieldHelpText )= props.helpText
+      block

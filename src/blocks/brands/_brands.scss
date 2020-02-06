@@ -1,0 +1,129 @@
+// В этом файле должны быть стили для БЭМ-блока brands, его элементов,
+// модификаторов, псевдоселекторов, псевдоэлементов, @media-условий...
+
+@import "../../libraries/variables";
+@import "../../libraries/mixins";
+
+.brands {
+  background-color: #f3f1f3;
+  padding: 40px 0 25px;
+  margin-bottom: 40px;
+
+  @media (min-width: $screen-xxl) {
+    margin-bottom: 60px;
+    padding: 0;
+    background: none;
+  }
+
+  &__container {
+    @media (min-width: $screen-xxl) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  &__title {
+    @include hide-text;
+  }
+
+  &__carousel {
+    position: relative;
+    grid-column: 1 / -1;
+    width: 100%;
+
+    @media (min-width: $screen-xxl) {
+      background-color: #f3f1f3;
+      padding-top: 50px;
+      padding-bottom: 50px;
+    }
+  }
+
+  &__list {
+    @include list-reset;
+    height: auto;
+    align-items: center;
+  }
+
+  &__item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    picture {
+      max-width: 162px;
+      width: 100%;
+
+      @media (min-width: $screen-xxl) {
+        max-width: 128px;
+      }
+
+      img {
+        height: auto;
+        width: 100%;
+        filter: grayscale(100%);
+      }
+    }
+  }
+
+  &__pagination {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    @include list-reset;
+    margin-top: 15px;
+
+    @media (min-width: $screen-xxl) {
+      display: none;
+    }
+
+    .swiper-pagination-bullet {
+      display: block;
+      border: 1px solid $gray;
+      background: none;
+      opacity: 1;
+      height: 8px;
+      width: 8px;
+      margin-right: 18px !important;
+
+      &:last-of-type {
+        margin-right: 0 !important;
+      }
+
+      &-active {
+        background: $gray;
+      }
+    }
+  }
+
+  &__arrows {
+    margin: 0;
+    display: none;
+
+    @media (min-width: $screen-xxl) {
+      display: flex;
+    }
+  }
+
+  &__arrow {
+    position: absolute;
+    top: calc(50% - 24px);
+    z-index: 2;
+
+    &--prev {
+      left: -24px;
+
+      svg {
+        margin-left: 7px;
+      }
+    }
+
+    &--next {
+      right: -24px;
+
+      svg {
+        margin-right: 7px;
+        transform: rotate(-180deg);
+      }
+    }
+  }
+}
