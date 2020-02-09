@@ -5,16 +5,18 @@
 @import "../../libraries/mixins";
 
 .page-footer {
-  background-color: $purple;
-  padding: 25px 0;
+  background: $purple;
   color: $white;
-  
-  @media (min-width: $screen-xl) {
-    padding: 16px 0;
-  }
 
   &__container {
     align-items: center;
+    padding-top: 25px;
+    padding-bottom: 25px;
+
+    @media (min-width: $screen-xl) {
+      padding-top: 16px;
+      padding-bottom: 16px;
+    }
   }
 
   &__copy {

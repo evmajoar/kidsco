@@ -1,13 +1,15 @@
 @import "../libraries/common";
 @import "../libraries/animations";
 
-@import "../blocks/page/page";
-@import "../blocks/page-main/page-main";
-@import "../blocks/page-footer/page-footer";
-
+@import "../blocks/burger/burger";
 @import "../blocks/form/form";
 @import "../blocks/field-text/field-text";
 @import "../blocks/button/button";
+
+@import "../blocks/page/page";
+@import "../blocks/page-header/page-header";
+@import "../blocks/page-main/page-main";
+@import "../blocks/page-footer/page-footer";
 
 @import "../blocks/logo/logo";
 @import "../blocks/info/info";

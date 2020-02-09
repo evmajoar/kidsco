@@ -8,6 +8,6 @@
   },
   "rules": {
     "no-console": 0,
-    "indent": ["warn", 2]
+    "indent": ["warn", 4]
   }
 }

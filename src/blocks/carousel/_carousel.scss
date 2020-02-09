@@ -1,0 +1,37 @@
+// В этом файле должны быть стили для БЭМ-блока carousel, его элементов,
+// модификаторов, псевдоселекторов, псевдоэлементов, @media-условий...
+
+@import "../../libraries/variables";
+@import "../../libraries/mixins";
+
+.swiper-pagination-bullets {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  @include list-reset;
+  margin-top: 25px;
+  z-index: 2;
+
+  @media (min-width: $screen-xxl) {
+    display: none;
+  }
+
+  .swiper-pagination-bullet {
+    display: block;
+    border: 1px solid $gray;
+    background: none;
+    opacity: 1;
+    height: 8px;
+    width: 8px;
+    margin-right: 15px !important;
+
+    &:last-of-type {
+      margin-right: 0 !important;
+    }
+
+    &-active {
+      background: $gray;
+    }
+  }
+}

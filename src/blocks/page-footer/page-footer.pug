@@ -2,36 +2,36 @@
 
 mixin page-footer( mods )
 
-    //- Принимает:
-        mods {string} - модификаторы
-
-    //- Вызов:
-        +logo( "/" )
-
     -
-      //- класс блока
-      const className = 'page-footer';
+        //- класс блока
+        var className = 'page-footer';
 
-      //- список модификаторов
-      const allMods = '';
-      if ( typeof mods !== 'undefined' && mods ) {
-        const modsList = mods.split( ',' );
-        for ( let i = 0; i < modsList.length; i++ ) {
-            allMods = allMods + ' ' + className + '--' + modsList[i].trim();
+        //- список модификаторов
+        var allMods = '';
+        if ( typeof mods !== 'undefined' && mods ) {
+            var modsList = mods.split( ',' );
+            for ( var i = 0; i < modsList.length; i++ ) {
+                allMods = allMods + ' ' + className + '--' + modsList[i].trim();
+            }
         }
-      }
 
     //- Данные
     include page-footer.data.pug
 
     footer( class=className + allMods )
-      div.container.page-footer__container
-        p( class=className + '__copy' )
-          span( class=className + '__copy-text ' + className + '__copy-text--opacity' ) © Kids&Co, 2019.&nbsp;
-          span( class=className + '__copy-text' ) Все права защищены.
-        each item in footerInfoData
-          p( class=className + '__info ' + className + '__info--' + item.mod )
-            if ( item.title )
-              span( class=className + '__info-title' )= item.title
-            a( class=className + '__info-link', href='mailto:sales@kidsandco.ru' )= item.text
-        +social()( class=className + '__social' )
+        div.container.page-footer__container
+
+            //- копирайтинг
+            p( class=className + '__copy' )
+                span( class=className + '__copy-text ' + className + '__copy-text--opacity' ) © Kids&Co, 2019.&nbsp;
+                span( class=className + '__copy-text' ) Все права защищены.
+
+            //- контакты
+            each item in footerInfoData
+                p( class=className + '__info ' + className + '__info--' + item.mod )
+                    if ( item.title )
+                        span( class=className + '__info-title' )= item.title
+                    a( class=className + '__info-link', href='mailto:sales@kidsandco.ru' )= item.text
+
+            //- социальные сети
+            +social()( class=className + '__social' )

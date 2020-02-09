@@ -23,6 +23,24 @@
   padding: 0;
   cursor: pointer;
 
+  .icon-arrow {
+    display: none;
+    stroke: $gray;
+
+    @media (min-width: $screen-xxl) {
+      display: block;
+      transform: rotate(-180deg);
+    }
+  }
+
+  .icon-arrow-long {
+    fill: $gray;
+
+    @media (min-width: $screen-xxl) {
+      display: none;
+    }
+  }
+
   // &:visited {
   //   color: $text-color;
   // }
@@ -32,39 +50,7 @@
   //  @include field-focus;
   //}
 
-
-  //&--pink {
-  //  background-color: $color-pink;
-  //  color: $text-color-revers;
-  //
-  //  &:active {
-  //    background-color: $gray-darker;
-  //  }
-  //
-  //  &:hover {
-  //    @media (min-width: $screen-xl) {
-  //      background-color: $gray-darker;
-  //    }
-  //  }
-  //}
-  //
-  //
-  //&--grey {
-  //  background-color: $gray-darker;
-  //  color: $white;
-  //
-  //  &:active {
-  //    background-color: $color-pink;
-  //  }
-  //
-  //  &:hover {
-  //    @media (min-width: $screen-xl) {
-  //      background-color: $color-pink;
-  //    }
-  //  }
-  //}
-
-  &--small-square {
+  &--square {
     width: 38px;
     height: 36px;
     background-color: transparent;
@@ -79,7 +65,9 @@
   }
 
   &--arrow {
-    display: block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     width: 48px;
     height: 48px;
     border-radius: 50%;
@@ -91,14 +79,12 @@
     }
 
     svg {
-      width: 6px;
-      height: 12px;
-      fill: none;
+      display: inline-block;
       stroke: #332638;
     }
   }
 
-  &--link-more {
+  &--link-arrow {
     display: inline-flex;
     font-size: 11px;
     font-weight: 700;
@@ -109,22 +95,34 @@
     svg {
       margin-left: 15px;
     }
+  }
 
-    .icon-arrow {
-      display: none;
-      stroke: $gray;
-
-      @media (min-width: $screen-xxl) {
-        display: block;
-        transform: rotate(180deg);
-      }
+  &--like {
+    span {
+      @include hide-text;
     }
 
-    .icon-arrow-long {
-      fill: $gray;
+    svg {
+      stroke: $purple;
+      fill: $white;
+    }
+  }
 
+  &--btn-border {
+    font-size: 14px;
+    line-height: 26px;
+    font-weight: 700;
+    text-align: center;
+    padding: 5px 10px;
+    height: 40px;
+    min-width: 225px;
+    border-radius: 20px;
+    border: 1px solid $purple;
+
+    &:hover {
       @media (min-width: $screen-xxl) {
-        display: none;
+        background-color: $purple;
+        color: $white;
       }
     }
   }

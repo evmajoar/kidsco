@@ -32,4 +32,13 @@
   }
 }
 
+@keyframes load-tracker {
+  0% {
+    stroke-dashoffset: 629;
+  }
+  100% {
+    stroke-dashoffset: 629 * 2;
+  }
+}
+
 

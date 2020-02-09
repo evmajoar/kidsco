@@ -1,0 +1,70 @@
+//- Все примеси в этом файле должны начинаться c имени блока ( page-header )
+
+mixin page-header( mods )
+
+    -
+        //- класс блока
+        var className = 'page-header';
+
+        //- список модификаторов
+        var allMods = '';
+        if ( typeof mods !== 'undefined' && mods ) {
+            var modsList = mods.split( ',' );
+            for ( var i = 0; i < modsList.length; i++ ) {
+                allMods = allMods + ' ' + className + '--' + modsList[i].trim();
+            }
+        }
+
+    //- Данные
+    include page-header.data.pug
+    include ../navigation/navigation.data.pug
+
+    header( class=className + allMods )
+        div.container.page-header__container
+
+            //- логотип
+            +logo()( class=className + '__logo' )
+                picture
+                    source( media='(min-width: 1326px)', srcset=setting.imagesSrc + 'logo-purple.svg', type='image/svg+xml' )
+                    img( src=setting.imagesSrc + 'logo-text-purple.svg', alt="Логотип Kids&Co" )
+
+            //- мобильная навигация (видна только на мобильных)
+            - var concatNavs = navData1.concat( navData2 );
+
+            div( class=className + '__nav-mobile' )
+                +burger( 'Показать главное меню' )
+                ul( class=className + '__nav-mobile-list' )
+                    each item in concatNavs
+                        li( class=className + '__nav-mobile-item')
+                            a( class=className + '__nav-mobile-link', href=item.href )= item.title
+
+
+            //- контактная информация
+            div( class=className + '__contacts' )
+                +button( '+7 812 123-45-67' )( class=className + '__contacts-phone', href='tel:+78121234567' )
+                    include ../../theme/icons/icon-phone.pug
+                +button( 'Заказать звонок' )( class=className + '__contacts-callback', type='button' )
+                p( class=className + '__contacts-time' )
+                    span 9:00 — 20:00
+                    include ../../theme/icons/icon-clock.pug
+
+            //- пользовательская панель
+            ul( class=className + '__user' )
+                each item in userPanelData
+                    li( class=className + '__user-item ' + className + '__user-item--' + item.type  )
+                        +button( item.text )( class=className + '__user-button', type='button' )
+                            != item.icon
+
+            //- левая навигация
+            ul( class=className + '__nav ' + className + '__nav--left' )
+                each item in navData1
+                    li( class=className + '__nav-item')
+                        +button( item.title )( class=className + '__nav-link', href=item.href )
+
+            //- правая навигация
+            ul( class=className + '__nav ' + className + '__nav--right' )
+                each item in navData2
+                    li( class=className + '__nav-item')
+                        +button( item.title )( class=className + '__nav-link', href=item.href )
+
+

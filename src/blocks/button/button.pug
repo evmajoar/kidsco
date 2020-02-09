@@ -3,38 +3,30 @@
 //- Создаем кнопку
 mixin button( text, mods, isInput )
 
-  //- Принимает:
-      text {string} - текст кнопки
-      mods {string} - список модификаторов
-      isInput {bool}   - флаг «это тег input»
+    -
+        //- класс контсруктора
+        var className = 'button';
 
-  //- Вызов:
-      +button( "Кнопка-input", "", true )
-      +button( "Кнопка-button", "success")
+        // список модификаторов
+        var allMods = '';
+        if( typeof( mods ) !== 'undefined' && mods ) {
+            var modsList = mods.split( ',' );
+            for ( var i = 0; i < modsList.length; i++ ) {
+                allMods = allMods + ' ' + className + '--' + modsList[i].trim();
+            }
+        }
 
-  -
-    //- класс контсруктора
-    var className = 'button';
+    if ( attributes.href )
+        a( class=className + allMods )&attributes( attributes )
+            span!= text
+            block
 
-    // список модификаторов
-    var allMods = '';
-    if( typeof( mods ) !== 'undefined' && mods ) {
-      var modsList = mods.split( ',' );
-      for ( var i = 0; i < modsList.length; i++ ) {
-        allMods = allMods + ' ' + className + '--' + modsList[i].trim();
-      }
-    }
+    //- если передан isInput и он true, это input
+    else if ( typeof isInput !== 'undefined' && isInput )
+        input( class=className + allMods, value=text, type='button' )&attributes( attributes )
 
-  if ( attributes.href )
-    a( class=className + allMods )&attributes( attributes )= text
-      block
-
-  //- если передан isInput и он true, это input
-  else if ( typeof isInput !== 'undefined' && isInput )
-    input( class=className + allMods, value=text, type='button' )&attributes( attributes )
-
-  //- иначе это button
-  else
-    button( class=className + allMods )&attributes( attributes )
-      span!= text
-      block
+    //- иначе это button
+    else
+        button( class=className + allMods )&attributes( attributes )
+            span!= text
+            block

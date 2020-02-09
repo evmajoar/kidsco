@@ -1,0 +1,172 @@
+// В этом файле должны быть стили для БЭМ-блока card, его элементов,
+// модификаторов, псевдоселекторов, псевдоэлементов, @media-условий...
+
+@import "../../libraries/variables";
+@import "../../libraries/mixins";
+
+.card {
+  $block-name: &; // #{$block-name}__element
+
+  width: 288px;
+
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    height: 288px;
+    width: 288px;
+    background: $white;
+    border: 1px solid #eeecef;
+
+    &:hover {
+      #{$block-name}__button-wrapper {
+        @media (min-width: $screen-xxl) {
+          display: flex;
+        }
+      }
+    }
+  }
+
+  &__picture {
+    img {
+      max-width: 199px;
+    }
+  }
+
+  &__sticker {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    width: 48px;
+    height: 48px;
+    left: 16px;
+    top: 16px;
+
+    span {
+      position: relative;
+      z-index: 2;
+      font-size: 11px;
+      font-weight: 700;
+      color: $white;
+    }
+
+    .icon-flower {
+      position: absolute;
+      left: 0;
+      top: 0;
+    }
+  }
+
+  &__like {
+    position: absolute;
+    right: 16px;
+    top: 16px;
+
+    .icon-heart{
+      stroke: $gray;
+
+      &:hover {
+        @media (min-width: $screen-xxl) {
+          stroke: $purple;
+          fill: $purple;
+        }
+      }
+    }
+
+    &--selected {
+      .icon-heart {
+        fill: $purple;
+        stroke: $purple;
+      }
+    }
+  }
+
+  &__description {
+    margin-top: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    @media (min-width: $screen-xxl) {
+      #{$block-name}__button {
+        display: none;
+      }
+    }
+  }
+
+  &__link-wrapper {
+    @media (min-width: $screen-xxl) {
+      position: relative;
+    }
+
+    &::after {
+      @media (min-width: $screen-xxl) {
+        @include pseudo;
+        display: none;
+        background: $purple;
+        bottom: 0;
+        left: 0;
+        height: 1px;
+        width: 100%;
+      }
+    }
+
+    &:hover {
+      &::after {
+        @media (min-width: $screen-xxl) {
+          display: block;
+        }
+      }
+    }
+  }
+
+  &__title {
+    font-size: 16px;
+  }
+
+  &__prices {
+    margin-top: 5px;
+  }
+
+  &__price {
+    font-size: 14px;
+    letter-spacing: 0.54px;
+  }
+
+  &__discount {
+    font-size: 12px;
+    line-height: 18px;
+    color: #a3aeb9;
+    margin-right: 8px;
+
+    @media (min-width: $screen-xxl) {
+      margin-right: 24px;
+      font-size: 14px;
+    }
+  }
+
+  &__button {
+    margin-top: 13px;
+  }
+
+  &__button-wrapper {
+    display: none;
+
+    @media (min-width: $screen-xxl) {
+      align-items: center;
+      justify-content: center;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      background-color: transparentize($white, .2);
+      min-height: 72px;
+      width: 100%;
+
+      #{$block-name}__button {
+        margin-top: 0;
+      }
+    }
+  }
+}

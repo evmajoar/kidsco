@@ -2,67 +2,62 @@
 
 mixin info( mods )
 
-  //- Принимает:
-      mods {string} - модификаторы
+    -
+        //- класс блока
+        var className = 'info';
 
-  //- Вызов:
-      +social( mods )
-
-  -
-    //- класс блока
-      const className = 'info';
-
-    //- список модификаторов
-      const allMods = '';
-      if ( typeof mods !== 'undefined' && mods ) {
-        let modsList = mods.split( ',' );
-        for ( let i = 0; i < modsList.length; i++ ) {
-          allMods += ' ' + className + '--' + modsList[i].trim();
+        //- список модификаторов
+        var allMods = '';
+        if ( typeof mods !== 'undefined' && mods ) {
+            var modsList = mods.split( ',' );
+            for ( var i = 0; i < modsList.length; i++ ) {
+                allMods += ' ' + className + '--' + modsList[i].trim();
+            }
         }
-      }
 
-  //- Данные списка
-  include ../navigation/navigation.data.pug
+    //- Данные списка
+    include ../navigation/navigation.data.pug
 
-  section( class=className + allMods )&attributes( attributes )
-    div( class='container ' + className + '__container' )
+    section( class=className + allMods )&attributes( attributes )
+        div.container( class=className + '__container' )
 
-      //- Логотип
-      +logo()( class=className + '__logo' )
-        picture
-          source( media='(min-width: 1326px)', srcset=setting.imagesSrc + 'logo-grey.svg', type='image/svg+xml' )
-          img( src=setting.imagesSrc + 'logo-text-grey.svg', alt="Логотип Kids&Co" )
+            //- Логотип
+            +logo()( class=className + '__logo' )
+                picture
+                    source( media='(min-width: 1326px)', srcset=setting.imagesSrc + 'logo-grey.svg', type='image/svg+xml' )
+                    img( src=setting.imagesSrc + 'logo-text-grey.svg', alt="Логотип Kids&Co" )
 
-      //- Списки навигации
-      mixin infoList( navData, wordIndex )
-        ul( class=className + '__nav-list ' + className + '__nav-list--' + wordIndex )
-          each item in navData
-            li( class=className + '__nav-item' )
-              a( class=className + '__nav-link', href=item.href )= item.title
+            //- Списки навигации
+            mixin infoList( navData, wordIndex )
+                ul( class=className + '__nav-list ' + className + '__nav-list--' + wordIndex )
+                    each item in navData
+                        li( class=className + '__nav-item' )
+                            a( class=className + '__nav-link', href=item.href )= item.title
 
-      +infoList( navData1, 'first' )
-      +infoList( navData2, 'second' )
-      +infoList( navData3, 'third' )
+            +infoList( navData1, 'first' )
+            +infoList( navData2, 'second' )
+            +infoList( navData3, 'third' )
 
-      //- Контакты
-      div( class=className + '__contacts' )
+            //- Контакты
+            div( class=className + '__contacts' )
 
-        //- Форма подписки
-        +form()( class=className + '__contacts-form', action='/', method='POST' )
-          +fieldset( "Форма подписки" )
-            +field-text({
-              title: 'Подписаться на рассылку',
-              mods: 'subscribe',
-              attrs: {
-                type: 'email',
-                placeholder: "Ваша электронная почта"
-              }
-            })
-            +button( 'Отправить', 'small-square' )(class=className + '__contacts-form-submit')
-              include ../../theme/icons/arrow-long.data.pug
+                //- Форма подписки
+                +form()( class=className + '__contacts-form', action='/', method='POST' )
+                    +fieldset( "Форма подписки" )
+                        +field-text({
+                            title: 'Подписаться на рассылку',
+                            mods: 'subscribe',
+                            attrs: {
+                                type: 'email',
+                                placeholder: "Ваша электронная почта"
+                            }
+                        })
+                        +button( 'Отправить', 'square' )(class=className + '__contacts-form-submit')
+                            include ../../theme/icons/arrow.data.pug
+                            include ../../theme/icons/arrow-long.data.pug
 
-        //- Контакты
-        p( class=className + '__contacts-time' ) Ежедневно, 9:00 — 20:00
-        p( class=className + '__contacts-call' )
-          a( class=className + '__contacts-phone', href='tel:+79152566585' ) +7 915 256-65-85
-          +button( 'Заказать звонок' )( class=className + '__contacts-callback' )
+                //- Контакты
+                span( class=className + '__contacts-time' ) Ежедневно, 9:00 — 20:00
+                p( class=className + '__contacts-call' )
+                    a( class=className + '__contacts-phone', href='tel:+79152566585' ) +7 915 256-65-85
+                    +button( 'Заказать звонок' )( class=className + '__contacts-callback' )

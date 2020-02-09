@@ -5,6 +5,8 @@
 @import "../../libraries/mixins";
 
 .info {
+  $block-name: &; // #{$block-name}__element
+
   padding: 37px 0;
   border-top: 1px solid $gray-light;
 
@@ -17,10 +19,6 @@
 
     @media (min-width: $screen-xxl) {
       grid-column: 1 / 3;
-    }
-
-    svg {
-      fill: $gray;
     }
   }
 
@@ -63,10 +61,14 @@
 
   &__contacts {
     margin-top: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 
     @media (min-width: $screen-xxl) {
       grid-column: 10 / -1;
       justify-self: end;
+      align-items: stretch;
 
       margin-top: 0;
       width: 100%;
@@ -84,8 +86,13 @@
         bottom: 2px;
         right: 2px;
 
-        svg {
+        .icon-arrow-long {
           fill: $purple;
+        }
+
+        .icon-arrow {
+          stroke: $purple;
+          transform: rotate(-180deg);
         }
       }
     }

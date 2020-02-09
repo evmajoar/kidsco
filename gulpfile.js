@@ -107,7 +107,7 @@ function buildJs() {
         index: `./${root.src}pages/index/index.js`,
         cart: `./${root.src}pages/cart/cart.js`
       },
-      mode: 'production',
+      mode: 'development',
       output: {
         filename: '[name].js',
       },
@@ -127,7 +127,7 @@ function buildJs() {
         jquery: 'jQuery'
       }
     } ) )
-    .pipe( uglify() )
+    // .pipe( uglify() )
     .pipe( rename( {
       suffix: '.min'
     } ) )

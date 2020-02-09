@@ -1,0 +1,44 @@
+//- Все примеси в этом файле должны начинаться c имени блока ( offer )
+
+mixin offer( props, isStock, mods )
+
+    -
+        //- класс блока
+        var className = 'offer';
+
+        //- список модификаторов
+        var allMods = '';
+        if ( typeof mods !== 'undefined' && mods ) {
+            var modsList = mods.split( ',' );
+            for ( var i = 0; i < modsList.length; i++ ) {
+                allMods += ' ' + className + '--' + modsList[i].trim();
+            }
+        }
+
+    section( class=className + allMods )
+        div.container( class=className + '__container' )
+
+            //- текстовое описание
+            p( class=className + '__description' )
+
+                if( isStock )
+                    span( class=className + '__text' ) Выгода до #[strong -70%] на избранные товары
+                else
+                    span.category( class=className + '__category' ) Одежда
+                    span.title.title--big( class=className + '__title' ) Лето, солнце #[br] и море улыбок
+                    +button( 'Смотреть <br> коллекцию', 'link-arrow' )( class=className + '__link', href='#' )
+                        include ../../theme/icons/arrow.data.pug
+                        include ../../theme/icons/arrow-long.data.pug
+
+            //- список предложений
+            ul( class=className + '__list' )
+                each item in props
+                    li( class=className + '__item' )
+                        picture( class=className + '__picture' )
+                            source( srcset=setting.imagesSrc + item.picture.webp, type='image/webp' )
+                            img( src=setting.imagesSrc + item.picture.jpg, alt=item.category.desk )
+                        +button( item.category.mob, 'link-arrow' )( class=className + '__link2 ' + className + '__link2--' + item.direction, href='#' )
+                            span!= item.category.desk
+                            include ../../theme/icons/arrow.data.pug
+
+

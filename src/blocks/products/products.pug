@@ -1,0 +1,35 @@
+//- Все примеси в этом файле должны начинаться c имени блока ( products )
+
+mixin products( props, mods )
+
+    -
+        //- класс блока
+        var className = 'products';
+
+        //- список модификаторов
+        var allMods = '';
+        if ( typeof mods !== 'undefined' && mods ) {
+            var modsList = mods.split( ',' );
+            for ( var i = 0; i < modsList.length; i++ ) {
+                allMods += ' ' + className + '--' + modsList[i].trim();
+            }
+        }
+
+    section( class=className + allMods )&attributes( attributes )
+        div.container( class=className + '__container' )
+
+            //- текстовое описание
+            div( class=className + '__description' )
+                h2.title( class=className + '__title' )= props.title
+                p( class=className + '__text' )= props.text
+                +button( 'Показать всё', 'link-arrow' )( class=className + '__link', href='#' )
+                    include ../../theme/icons/arrow.data.pug
+                    include ../../theme/icons/arrow-long.data.pug
+
+            //- список продуктов
+            div.swiper-container( class=className + '__cards' )
+                ul.swiper-wrapper( class=className + '__list' )
+                    block
+                ul( class=className + '__pagination' )
+
+

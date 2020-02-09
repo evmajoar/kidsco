@@ -2,31 +2,22 @@
 
 mixin logo( mods )
 
-  //- Принимает:
-      mods {string} - модификаторы
+    -
+        //- класс блока
+        var className = 'logo';
 
-  //- Вызов:
-      +logo( mods )
+        //- список модификаторов
+        var allMods = '';
+        if ( typeof mods !== 'undefined' && mods ) {
+            var modsList = mods.split( ',' );
+            for ( var i = 0; i < modsList.length; i++ ) {
+                allMods += ' ' + className + '--' + modsList[i].trim();
+            }
+        }
 
-  -
-    //- класс блока
-    const className = 'logo';
-
-    //- список модификаторов
-    const allMods = '';
-      if ( typeof mods !== 'undefined' && mods ) {
-      let modsList = mods.split( ',' );
-      for ( let i = 0; i < modsList.length; i++ ) {
-        allMods += ' ' + className + '--' + modsList[i].trim();
-      }
-    }
-
-  //- Логотип-ссылка
-  if ( attributes.href )
-    a( class=className + allMods )&attributes( attributes )
-      block
-
-  //- Логотип-объект
-  else
-    p( class=className + allMods )&attributes( attributes )
-      block
+    if ( attributes.href )
+        a( class=className + allMods )&attributes( attributes )
+            block
+    else
+        p( class=className + allMods )&attributes( attributes )
+            block

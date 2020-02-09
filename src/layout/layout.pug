@@ -1,11 +1,13 @@
 //- Шаблон страницы
+include ../blocks/page-header/page-header
+include ../blocks/burger/burger
 include ../blocks/form/form
 include ../blocks/field-text/field-text
 include ../blocks/button/button
 include ../blocks/info/info
-include ../blocks/page-footer/page-footer
 include ../blocks/logo/logo
 include ../blocks/social/social
+include ../blocks/page-footer/page-footer
 
 doctype html
 
@@ -32,8 +34,7 @@ html( class="page", lang=lang )
     noscript Пожалуйста, включите JavaScript и перезагрузите страницу.
 
     div.page__inner
-      header.page-header
-        block header
+      +page-header()
 
       main.page-main
         block main

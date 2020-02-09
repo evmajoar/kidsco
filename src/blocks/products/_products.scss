@@ -1,0 +1,114 @@
+// В этом файле должны быть стили для БЭМ-блока products, его элементов,
+// модификаторов, псевдоселекторов, псевдоэлементов, @media-условий...
+
+@import "../../libraries/variables";
+@import "../../libraries/mixins";
+
+.products {
+  $block-name: &; // #{$block-name}__element
+
+  background-color: rgba(230, 235, 240, 0.7);
+
+  @media (min-width: $screen-xxl) {
+    margin: 100px 0 170px;
+  }
+
+  &__container {
+    padding-top: 25px;
+    padding-bottom: 25px;
+
+    @media (min-width: $screen-xxl) {
+      height: 566px;
+    }
+  }
+
+  &__description {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+
+    @media (min-width: $screen-xxl) {
+      height: 100%;
+      justify-content: center;
+    }
+  }
+
+  &__pagination {
+    @media (min-width: $screen-xxl) {
+      display: none;
+    }
+  }
+
+  &__text {
+    margin-top: 13px;
+
+    @media (min-width: $screen-xxl) {
+      margin-top: 17px;
+    }
+  }
+
+  &__link {
+    margin-top: 19px;
+    margin-left: 30px;
+
+    @media (min-width: $screen-xxl) {
+      margin-left: 0;
+      margin-top: 53px;
+      flex-direction: column;
+    }
+
+    svg {
+      @media (min-width: $screen-xxl) {
+        margin-left: 0;
+        margin-top: 16px;
+      }
+    }
+  }
+
+  &__cards {
+    margin-top: 20px;
+    width: 100%;
+
+    @media (min-width: $screen-xxl) {
+      margin-top: -89px;
+    }
+  }
+
+  &__list {
+    @media (min-width: $screen-xxl) {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-gap: $grid-gutter-width - 3;
+    }
+  }
+
+  &--direction-lr {
+    #{$block-name}__description {
+      @media (min-width: $screen-xxl) {
+        grid-column: 1 / 4;
+      }
+    }
+
+    #{$block-name}__cards {
+      @media (min-width: $screen-xxl) {
+        grid-column: 4 / -1;
+      }
+    }
+  }
+
+  &--direction-rl {
+    #{$block-name}__description {
+      @media (min-width: $screen-xxl) {
+        grid-column: 10 / -1;
+      }
+    }
+
+    #{$block-name}__cards {
+      @media (min-width: $screen-xxl) {
+        grid-column: 1 / 10;
+        order: -1;
+      }
+    }
+  }
+}

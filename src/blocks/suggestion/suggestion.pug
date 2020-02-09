@@ -2,37 +2,28 @@
 
 mixin suggestion( props, mods )
 
-  -
-    //- класс блока
-    var className = 'suggestion';
+    -
+        //- класс блока
+        var className = 'suggestion';
 
-    //- список модификаторов
-    var allMods = '';
-    if ( typeof mods !== 'undefined' && mods ) {
-      var modsList = mods.split( ',' );
-      for ( var i = 0; i < modsList.length; i++ ) {
-        allMods += ' ' + className + '--' + modsList[i].trim();
-      }
-    }
+        //- список модификаторов
+        var allMods = '';
+        if ( typeof mods !== 'undefined' && mods ) {
+            var modsList = mods.split( ',' );
+            for ( var i = 0; i < modsList.length; i++ ) {
+                allMods += ' ' + className + '--' + modsList[i].trim();
+            }
+        }
 
-  section( class=className + allMods )
+    section( class=className + allMods )
 
-    //- заголовок секции (скрытый)
-    //- h2( class=className + '__title') Предложения
-
-    //- список предложений
-    ul.container( class=className + '__container')
-      each item in props
-        li( class=className + '__item' )
-
-          //- категория
-          span.category( class=className + '__category' )= item.category
-
-          //- заголовок
-          a( class=className + '__wrapper', href='#' )
-            h2.title( class=className + '__subtitle' )= item.title
-
-          //- изображение
-          picture( class=className + '__picture' )
-            source( srcset=setting.imagesSrc + item.picture.webp, type='image/webp' )
-            img( src=setting.imagesSrc + item.picture.jpg, alt=item.title )
+        //- список предложений
+        ul.container( class=className + '__container')
+            each item in props
+                li( class=className + '__item' )
+                    span.category( class=className + '__category' )= item.category
+                    a( class=className + '__wrapper', href='#' )
+                        span.title( class=className + '__subtitle' )= item.title
+                    picture( class=className + '__picture' )
+                        source( srcset=setting.imagesSrc + item.picture.webp, type='image/webp' )
+                        img( src=setting.imagesSrc + item.picture.jpg, alt=item.title )

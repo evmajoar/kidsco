@@ -1,43 +1,54 @@
 //- Главная страница
 extends ../../layout/layout
+include ../../blocks/presentation/presentation
 include ../../blocks/journal/journal
 include ../../blocks/gifts/gifts
 include ../../blocks/suggestion/suggestion
+include ../../blocks/offer/offer
+include ../../blocks/card/card
+include ../../blocks/products/products
 include ../../blocks/brands/brands
 
 block meta
 
-  include index.data.pug
+    include index.data.pug
 
-  title=title + " | " + siteName
-  meta( name="description", content=description )
-  meta( name="keywords", content=keywords )
+    title=title + " | " + siteName
+    meta( name="description", content=description )
+    meta( name="keywords", content=keywords )
 
 block append head
-  link( rel="canonical" href=siteURL + siteURN )
-  link( rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/css/swiper.min.css" )
-  link( rel="stylesheet" href="styles/index.min.css" )
-
-block header
-  div.container.page-header__container
-    // -+logo()( class="page-header__logo" href=siteURL )
+    link( rel="canonical" href=siteURL + siteURN )
+    link( rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/css/swiper.min.css" )
+    link( rel="stylesheet" href="styles/index.min.css" )
 
 block main
-  include ../../blocks/journal/journal.data.pug
-  include ../../blocks/gifts/gifts.data.pug
-  include ../../blocks/suggestion/suggestion.data.pug
 
-  div.container.page-main__wrapper
-    +journal( journalData1, 'direction-lr' )
-    +gifts( giftsData1, 'direction-lr' )
-  div.container.page-main__wrapper
-    +journal( journalData2, 'direction-rl' )
-    +gifts( giftsData2, 'direction-rl' )
-  +suggestion( sugData1 )
-  +suggestion( sugData2 )
-  +brands()
-  +info()
+    include ../../blocks/journal/journal.data.pug
+    include ../../blocks/gifts/gifts.data.pug
+    include ../../blocks/suggestion/suggestion.data.pug
+    include ../../blocks/offer/offer.data.pug
+    include ../../blocks/card/card.data.pug
+    include ../../blocks/products/products.data.pug
+
+    +presentation()
+    div.container.page-main__jg
+        +journal( journalData1, 'direction-lr' )
+        +gifts( giftsData1, 'direction-lr' )
+    +offer( offerData1 )
+    +products( productsData1, 'direction-lr' )
+        +card( cardData1, 'li', true )
+    div.container.page-main__jg
+        +journal( journalData2, 'direction-rl' )
+        +gifts( giftsData2, 'direction-rl' )
+    +suggestion( sugData1 )
+    +offer( offerData2, true )
+    +products( productsData2, 'direction-rl' )
+        +card( cardData1, 'li', true )
+    +suggestion( sugData2 )
+    +brands()
+    +info()
 
 block append foot
-  script( src="//cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/js/swiper.min.js" )
-  script( src="scripts/index.min.js" )
+    script( src="//cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/js/swiper.min.js" )
+    script( src="scripts/index.min.js" )

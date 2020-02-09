@@ -1,0 +1,46 @@
+//- Все примеси в этом файле должны начинаться c имени блока ( card )
+
+mixin card( props, tag, isSlide, mods )
+
+    -
+        //- класс блока
+        var className = 'card';
+
+        //- список модификаторов
+        var allMods = '';
+        if ( typeof mods !== 'undefined' && mods ) {
+            var modsList = mods.split( ',' );
+            for ( var i = 0; i < modsList.length; i++ ) {
+                allMods = allMods + ' ' + className + '--' + modsList[i].trim();
+            }
+        }
+
+    each item in props
+        #{tag}( class=className + (isSlide ? ' swiper-slide' : '') + allMods )&attributes( attributes )
+
+            //- изображение
+            div( class=className + '__header' )
+                picture( class=className + '__picture' )
+                    source( srcset=setting.imagesSrc + item.picture.webp, type='image/webp' )
+                    img( src=setting.imagesSrc + item.picture.jpg, alt=item.title )
+                if( item.discount !== '' && item.discount )
+                    span( class=className + '__sticker' )
+                        span= '-' + ( 100 - ( ( (item.price - item.discount) / item.price ) * 100) ).toFixed() + '%'
+                        include ../../theme/icons/icon-flower.pug
+                +button( 'Добавить в избранное', 'like' )( class=className + '__like' )
+                    include ../../theme/icons/icon-heart.pug
+                p( class=className + '__button-wrapper' )
+                    +button( 'Добавить в корзину', 'btn-border' )( class=className + '__button' )
+
+            //- текстовое описание
+            div( class=className + '__description' )
+                a( class=className + '__link-wrapper', href='#' )
+                    h2( class=className + '__title' )= item.title
+                p( class=className + '__prices' )
+                    if( item.discount !== '' && item.discount )
+                        span( class=className + '__discount' )
+                            s!= ( item.price + item.discount ) + ' ₽'
+                        span( class=className + '__price' )!= ( item.price - item.discount ) + ' ₽'
+                    else
+                        span( class=className + '__price' )= item.price + ' ₽'
+                +button( 'Добавить в корзину', 'btn-border' )( class=className + '__button' )
