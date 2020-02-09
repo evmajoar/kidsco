@@ -45,8 +45,8 @@ mixin page-header( mods )
                     //- мобильная пользовательская панель
                     div( class=className + '__nav-mobile-user' )
                         each item in userPanelData
-                            if(item.type === 'login')
-                                +button( item.text )( class=className + '__nav-mobile-user-button', type='button' )
+                            if( item.type === 'login' )
+                                +button( item.text )( class=className + '__nav-mobile-user-button', href='#' )
                                     != item.icon
 
                     //- мобильные контакты
