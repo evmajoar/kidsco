@@ -66,8 +66,10 @@
 
     svg{
       stroke: $gray;
+    }
 
-      &:hover {
+    &:hover {
+      svg {
         @media (min-width: $screen-xxl) {
           stroke: $purple;
           fill: $purple;

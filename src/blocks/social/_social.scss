@@ -42,29 +42,49 @@
 
     &--instagram {
       svg {
-        width: 16px;
-        height: 16px;
+        width: 22px;
+        height: 22px;
+
+        @media (min-width: $screen-xxl) {
+          width: 16px;
+          height: 16px;
+        }
       }
     }
 
     &--facebook {
       svg {
-        width: 8px;
-        height: 16px;
+        width: 11px;
+        height: 23px;
+
+        @media (min-width: $screen-xxl) {
+          width: 8px;
+          height: 16px;
+        }
       }
     }
 
     &--vkontakte {
       svg {
-        width: 16px;
-        height: 9px;
+        width: 25px;
+        height: 15px;
+
+        @media (min-width: $screen-xxl) {
+          width: 16px;
+          height: 9px;
+        }
       }
     }
 
     &--twitter {
       svg {
-        width: 16px;
-        height: 14px;
+        width: 21px;
+        height: 18px;
+
+        @media (min-width: $screen-xxl) {
+          width: 16px;
+          height: 14px;
+        }
       }
     }
   }
