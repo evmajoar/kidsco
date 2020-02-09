@@ -4,15 +4,19 @@
 
 .burger {
   display: flex;
+  align-items: center;
+  justify-content: center;
   position: relative;
-  z-index: 1;
+  z-index: 11;
   width: 24px;
   border: none;
   padding: 0;
   line-height: 24px;
+  height: 24px;
   background: transparent;
   user-select: none;
   cursor: pointer;
+
 
   > span { // stylelint-disable-line  selector-combinator-blacklist
     display: inline-block;

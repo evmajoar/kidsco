@@ -13,6 +13,7 @@
     align-items: center;
     padding-top: 14px;
     padding-bottom: 14px;
+    position: relative;
 
     @media (min-width: $screen-xxl) {
       grid-template-columns: repeat( 12, 64px );
@@ -69,6 +70,7 @@
   &__user {
     justify-self: end;
     display: flex;
+    align-items: center;
 
     @media (min-width: $screen-xxl) {
       order: 3;
@@ -203,17 +205,108 @@
       grid-row: 2 / 3;
       justify-self: end;
     }
+  }
 
-    &-mobile {
-      order: -1;
-      justify-self: start;
+  &__nav-mobile {
+    order: -1;
+    justify-self: start;
 
-      @media (min-width: $screen-xxl) {
-        display: none;
+    @media (min-width: $screen-xxl) {
+      display: none;
+    }
+
+    &-wrapper {
+      display: none;
+
+      &--open {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-column-gap: 30px;
+        max-width: 320px;
+        position: absolute;
+        z-index: 10;
+        background: $white;
+        width: 100%;
+        left: 0;
+        top: 0;
+        padding: 52px 15px 32px;
+        border-bottom: 1px solid #e0e0e0;
+      }
+    }
+
+    &-list {
+      grid-column: 1 / 2;
+      grid-row: 1 / 4;
+    }
+
+    &-item {
+      margin-bottom: 7px;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+
+    &-link {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: .4px;;
+      text-transform: uppercase;
+    }
+
+    &-user {
+      grid-column: 2 / -1;
+      grid-row: 1 / 2;
+      justify-self: end;
+
+      &-button {
+        align-items: center;
+
+        span {
+          color: $gray;
+          margin-left: 8px;
+          font-size: 14px;
+        }
+
+        svg {
+          order: -1;
+          stroke: $purple;
+        }
+      }
+    }
+
+    &-contacts {
+      grid-column: 2 / -1;
+      grid-row: 2 / 3;
+      justify-self: end;
+      font-size: 14px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      margin-top: 10px;
+
+      &-phone, &-time {
+        span {
+          margin-left: 8px;
+          font-size: 14px;
+        }
+
+        svg {
+          stroke: $purple;
+          order: -1;
+        }
       }
 
-      &-list {
-        display: none;
+      &-callback, &-time {
+        span {
+          color: $gray !important;
+        }
+      }
+
+      &-time {
+        display: flex;
+        align-items: center;
+        margin-top: 14px;
       }
     }
   }

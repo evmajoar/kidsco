@@ -15,7 +15,12 @@
   &__carousel {
     position: relative;
     grid-column: 1 / -1;
-    width: 100%;
+    //width: 100%;
+  }
+
+  &__list {
+    justify-content: flex-start;
+    align-items: flex-start;
   }
 
   &__item {

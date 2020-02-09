@@ -4,14 +4,26 @@
 @import "../../libraries/variables";
 @import "../../libraries/mixins";
 
+.swiper-container {
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}
+
+//.swiper-slide {
+//  img {
+//    width: auto;
+//  }
+//}
+
 .swiper-pagination-bullets {
   position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
   @include list-reset;
-  margin-top: 25px;
+  margin-top: 17px;
   z-index: 2;
+  bottom: 0 !important;
 
   @media (min-width: $screen-xxl) {
     display: none;

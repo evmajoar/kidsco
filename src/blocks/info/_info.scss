@@ -9,9 +9,11 @@
 
   padding: 37px 0;
   border-top: 1px solid $gray-light;
+  margin-top: 40px;
 
   @media (min-width: $screen-xxl) {
     padding: 67px 0;
+    margin-top: 0;
   }
 
   &__logo {
@@ -76,6 +78,7 @@
 
     &-form {
       margin-bottom: 15px;
+      width: 100%;
 
       @media (min-width: $screen-xxl) {
         margin-bottom: 25px;
