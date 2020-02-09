@@ -31,21 +31,25 @@ mixin page-header( mods )
             //- мобильная навигация (видна только на мобильных)
             - var concatNavs = navData1.concat( navData2 );
 
+            //- мобильная навигация
             div( class=className + '__nav-mobile' )
                 +burger( 'Показать мобильное меню', 'page-header__nav-mobile-wrapper', 'page-header__nav-mobile-wrapper--open' )( class='page-header__nav-mobile-toggler' )
                 div( class=className + '__nav-mobile-wrapper' )
 
+                    //- мобильное меню
                     ul( class=className + '__nav-mobile-list' )
                         each item in concatNavs
                             li( class=className + '__nav-mobile-item')
                                 a( class=className + '__nav-mobile-link', href=item.href )= item.title
 
+                    //- мобильная пользовательская панель
                     div( class=className + '__nav-mobile-user' )
                         each item in userPanelData
                             if(item.type === 'login')
                                 +button( item.text )( class=className + '__nav-mobile-user-button', type='button' )
                                     != item.icon
 
+                    //- мобильные контакты
                     div( class=className + '__nav-mobile-contacts' )
                         +button( '+7 812 123-45-67' )( class=className + '__nav-mobile-contacts-phone', href='tel:+78121234567' )
                             include ../../theme/icons/icon-phone.pug

@@ -52,7 +52,7 @@
       color: $white;
     }
 
-    .icon-flower {
+    svg {
       position: absolute;
       left: 0;
       top: 0;
@@ -64,7 +64,7 @@
     right: 16px;
     top: 16px;
 
-    .icon-heart{
+    svg{
       stroke: $gray;
 
       &:hover {
@@ -76,7 +76,7 @@
     }
 
     &--selected {
-      .icon-heart {
+      svg {
         fill: $purple;
         stroke: $purple;
       }
