@@ -19,19 +19,21 @@ mixin page-footer( mods )
     include page-footer.data.pug
 
     footer( class=className + allMods )
-        div.container.page-footer__container
+        block
+        div( class=className + '__bottom-bar' )
+            div.container.page-footer__container
 
-            //- копирайтинг
-            p( class=className + '__copy' )
-                span( class=className + '__copy-text ' + className + '__copy-text--opacity' ) © Kids&Co, 2019.&nbsp;
-                span( class=className + '__copy-text' ) Все права защищены.
+                //- копирайтинг
+                p( class=className + '__copy' )
+                    span( class=className + '__copy-text ' + className + '__copy-text--opacity' ) © Kids&Co, 2019.&nbsp;
+                    span( class=className + '__copy-text' ) Все права защищены.
 
-            //- контакты
-            each item in footerInfoData
-                p( class=className + '__info ' + className + '__info--' + item.mod )
-                    if ( item.title )
-                        span( class=className + '__info-title' )= item.title
-                    a( class=className + '__info-link', href='mailto:sales@kidsandco.ru' )= item.text
+                //- контакты
+                each item in footerInfoData
+                    p( class=className + '__info ' + className + '__info--' + item.mod )
+                        if ( item.title )
+                            span( class=className + '__info-title' )= item.title
+                        a( class=className + '__info-link', href='mailto:sales@kidsandco.ru' )= item.text
 
-            //- социальные сети
-            +social()( class=className + '__social' )
+                //- социальные сети
+                +social()( class=className + '__social' )

@@ -10,6 +10,8 @@ $screen-xxl: 1326px;
 $grid-columns: 12;
 $grid-gutter-width: 48px;
 
+$container-xxl: ( ( 64 + 48 ) * $grid-columns ) - $grid-gutter-width;
+
 // Базовые цвета https://colorscheme.ru/color-converter.html
 $white: hsl(0, 0%, 100%);
 $black: hsl(0, 0%, 0%);

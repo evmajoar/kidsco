@@ -15,6 +15,26 @@
   }
 
   &__legend {
-    @include hide-text;
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 32px;
+  }
+
+  &__fields {
+    &-wrapper {
+      display: flex;
+      flex-flow: row wrap;
+    }
+
+    &-title {
+      flex-basis: 100%;
+      font-size: 14px;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+  }
+
+  &__text {
+    font-size: 14px;
   }
 }

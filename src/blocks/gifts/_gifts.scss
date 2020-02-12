@@ -17,11 +17,9 @@
   &__description {
     display: flex;
     flex-direction: column;
-    padding: 15px 10px 35px;
-    border-bottom: 1px solid #ecf0f4;
+    padding: 15px 10px 25px;
 
     @media (min-width: $screen-xxl) {
-      border-bottom: 0;
       padding: 46px 10px 0;
     }
   }

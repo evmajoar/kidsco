@@ -1,0 +1,45 @@
+//- Все примеси в этом файле должны начинаться c имени блока ( user-panel )
+
+mixin user-panel( props, mods )
+
+    -
+        //- класс блока
+        var className = 'user-panel';
+
+        //- список модификаторов
+        var allMods = '';
+        if ( typeof mods !== 'undefined' && mods ) {
+            var modsList = mods.split( ',' );
+            for ( var i = 0; i < modsList.length; i++ ) {
+                allMods += ' ' + className + '--' + modsList[i].trim();
+            }
+        }
+
+    //- данные
+    include user-panel.data.pug
+
+    div( class=className + allMods )
+
+        //- шапка
+        p( class=className + '__header' )
+            span( class=className + '__avatar' )
+                img( src=setting.imagesSrc + 'avatar.svg', alt='Аватар отсутсвует' )
+            span( class=className + '__title' ) Артем Мельников
+
+        //- навигация
+        ul( class=className + '__list' )
+            each item in userPanelListData
+                li( class=className + '__item ' + (item.current === true ? className + '__item--current' : '') )
+                    a( class=className + '__item-wrapper', href='#' )
+                        strong( class=className + '__subtitle' )= item.title
+                        p( class=className + '__text' )
+                            if( item.value )
+                                span( class=className + '__text-prop' )= item.prop + ': '
+                                span( class=className + '__text-value' )= item.value
+                            else
+                                span( class=className + '__text-prop' )= item.prop
+                    include ../../theme/icons/arrow.data.pug
+            li( class=className + '__item ' + className + '__item--logout' )
+                a( class=className + '__item-wrapper', href='#' )
+                    p( class=className + '__text' )
+                        span( class=className + '__text-prop' ) Выход

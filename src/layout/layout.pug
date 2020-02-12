@@ -1,46 +1,59 @@
 //- Шаблон страницы
-include ../blocks/page-header/page-header
+
 include ../blocks/burger/burger
+include ../blocks/button/button
 include ../blocks/form/form
 include ../blocks/field-text/field-text
-include ../blocks/button/button
-include ../blocks/info/info
+
+include ../blocks/page-header/page-header
 include ../blocks/logo/logo
-include ../blocks/social/social
+include ../blocks/info/info
 include ../blocks/page-footer/page-footer
+include ../blocks/social/social
 
 doctype html
 
 include layout.data.pug
 
 html( class="page", lang=lang )
-  head
-    meta( charset=charset )
-    meta( name="viewport", content="width=device-width, initial-scale=1" )
-    meta( name="language", content=lang.toUpperCase() )
-    meta( name="format-detection", content="telephone=no" )
-    meta( name="format-detection", content="date=no" )
-    meta( name="format-detection", content="email=no" )
-    meta( name="notranslate", content="google" )
+    head
+        meta( charset=charset )
+        meta( name="viewport", content="width=device-width, initial-scale=1" )
+        meta( name="language", content=lang.toUpperCase() )
+        meta( name="format-detection", content="telephone=no" )
+        meta( name="format-detection", content="date=no" )
+        meta( name="format-detection", content="email=no" )
+        meta( name="notranslate", content="google" )
 
-    block meta
+        block meta
 
-    block head
-      link( rel="dns-prefetch" href="//cdnjs.cloudflare.com/" )
-      link( rel="preconnect" href="//cdnjs.cloudflare.com/" )
-      link( rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" )
+        block head
+            link( rel="dns-prefetch" href="//cdnjs.cloudflare.com/" )
+            link( rel="preconnect" href="//cdnjs.cloudflare.com/" )
+            link( rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" )
 
-  body
-    noscript Пожалуйста, включите JavaScript и перезагрузите страницу.
+    body
+        noscript Пожалуйста, включите JavaScript и перезагрузите страницу.
 
-    div.page__inner
-      +page-header()
+        div.page__inner
+            +page-header()
 
-      main.page-main
-        block main
+            div.page__content( class='' + ( !haveSidebar? 'page__content--index' : '' ) )
+                if( haveSidebar )
+                    div.page__content-header
+                        h1.page__title= title
+                        +breadcrumbs()
+                    main.page__content-main
+                        block main
+                    sidebar.page__content-sidebar
+                        block sidebar
+                else
+                    main.page-main
+                        block main
 
-      div.page__footer
-        +page-footer()
+            div.page__footer
+                +page-footer()
+                    +info()
 
-    block foot
-      script( src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" )
+        block foot
+            script( src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" )

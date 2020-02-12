@@ -7,13 +7,15 @@
 .info {
   $block-name: &; // #{$block-name}__element
 
-  padding: 37px 0;
-  border-top: 1px solid $gray-light;
-  margin-top: 40px;
+  &__container {
+    border-top: 1px solid #97a6b5;
+    padding-top: 37px;
+    padding-bottom: 37px;
 
-  @media (min-width: $screen-xxl) {
-    padding: 67px 0;
-    margin-top: 0;
+    @media (min-width: $screen-xxl) {
+      padding-top: 67px;
+      padding-bottom: 67px;
+    }
   }
 
   &__logo {
@@ -96,6 +98,19 @@
         .icon-arrow {
           stroke: $purple;
           transform: rotate(-180deg);
+        }
+      }
+
+      .form__legend {
+        @include hide-text;
+      }
+
+      .field-text__name {
+        text-align: center;
+
+        @media (min-width: $screen-xxl) {
+          margin-bottom: 23px;
+          text-align: right;
         }
       }
     }

@@ -1,0 +1,181 @@
+//- Все примеси в этом файле должны начинаться c имени блока ( user-form )
+
+mixin user-form( props, mods )
+
+    -
+        //- класс блока
+        var className = 'user-form';
+
+        //- список модификаторов
+        var allMods = '';
+        if ( typeof mods !== 'undefined' && mods ) {
+            var modsList = mods.split( ',' );
+            for ( var i = 0; i < modsList.length; i++ ) {
+                allMods += ' ' + className + '--' + modsList[i].trim();
+            }
+        }
+
+    div( class=className + allMods )
+
+        +form()( class=className + '__form', action='/', method='POST' )
+            +fieldset( "Профиль пользователя" )
+                +field-text({
+                    title: 'Имя',
+                    attrs: {
+                        type: 'text',
+                        placeholder: "Имя"
+                    }
+                })
+                +field-text({
+                    title: 'Фамилия',
+                    attrs: {
+                        type: 'text',
+                        placeholder: "Фамилия"
+                    }
+                })
+                +field-text({
+                    title: 'Отчество',
+                    attrs: {
+                        type: 'text',
+                        placeholder: "Отчество"
+                    }
+                })
+                +field-text({
+                    title: 'Телефон*',
+                    mods: 'phone',
+                    attrs: {
+                        type: 'tel',
+                        placeholder: "Телефон"
+                    }
+                })
+                +field-text({
+                    title: 'Email*',
+                    attrs: {
+                        type: 'email',
+                        placeholder: "example@mail.com"
+                    }
+                })
+                +field-text({
+                    title: 'Дата рождения',
+                    mods: 'date',
+                    attrs: {
+                        type: 'text',
+                        placeholder: "02.02.2020"
+                    }
+                })
+                p.form__fields-wrapper
+                    span.form__fields-title Пол
+                    +field-text({
+                        title: 'Мужской',
+                        mods: 'radio',
+                        attrs: {
+                            type: 'radio',
+                            name: 'gender',
+                            value: 'Мужской',
+                            checked: true,
+                        }
+                    })
+                    +field-text({
+                        title: 'Женский',
+                        mods: 'radio',
+                        attrs: {
+                            type: 'radio',
+                            name: 'gender',
+                            value: 'Женский'
+                        }
+                    })
+
+            //- адрес доставки
+            +fieldset( "Адрес доставки" )
+                +field-text({
+                    title: 'Индекс',
+                    attrs: {
+                        type: 'text',
+                        placeholder: "Индекс"
+                    }
+                })
+                +field-text({
+                    title: 'Страна',
+                    attrs: {
+                        type: 'text',
+                        placeholder: "Страна"
+                    }
+                })
+                +field-text({
+                    title: 'Регион',
+                    attrs: {
+                        type: 'text',
+                        placeholder: "Регион"
+                    }
+                })
+                +field-text({
+                    title: 'Город',
+                    attrs: {
+                        type: 'text',
+                        placeholder: "Город"
+                    }
+                })
+                +field-text({
+                    title: 'Улица*',
+                    attrs: {
+                        type: 'text',
+                        placeholder: "Улица"
+                    }
+                })
+                +field-text({
+                    title: 'Дом, корпус и строение*',
+                    attrs: {
+                        type: 'text',
+                        placeholder: "Дом, корпус и строение"
+                    }
+                })
+                +field-text({
+                    title: 'Подъезд',
+                    attrs: {
+                        type: 'text',
+                        placeholder: "Номер"
+                    }
+                })
+                +field-text({
+                    title: 'Кв/офис',
+                    attrs: {
+                        type: 'text',
+                        placeholder: "№ кв"
+                    }
+                })
+
+            //- мои рассылки
+            +fieldset( "Мои рассылки", 'subscribes' )
+                p.form__text
+                    | Вы можете подписаться на следующие виды рассылок нашего
+                    | магазина для получения новостей промоакций и промокодов
+                +field-text({
+                    title: 'Акции, персональные промокоды, распродажи',
+                    mods: 'checkbox',
+                    attrs: {
+                        type: 'checkbox',
+                        name: 'stock',
+                        value: 'Акции, персональные промокоды, распродажи'
+                    }
+                })
+                +field-text({
+                    title: 'Рекомендации товаров',
+                    mods: 'checkbox',
+                    attrs: {
+                        type: 'checkbox',
+                        name: 'recommend',
+                        value: 'Рекомендации товаров'
+                    }
+                })
+                +field-text({
+                    title: 'Новости компании',
+                    mods: 'checkbox',
+                    attrs: {
+                        type: 'checkbox',
+                        name: 'news',
+                        value: 'Новости компании'
+                    }
+                })
+
+        p( class=className + '__buttons' )
+            +button( 'Удалить учетную запись' )( class=className + '__delete-acc' )

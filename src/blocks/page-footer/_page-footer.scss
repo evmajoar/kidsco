@@ -5,8 +5,11 @@
 @import "../../libraries/mixins";
 
 .page-footer {
-  background: $purple;
-  color: $white;
+
+  &__bottom-bar {
+    background: $purple;
+    color: $white;
+  }
 
   &__container {
     align-items: center;

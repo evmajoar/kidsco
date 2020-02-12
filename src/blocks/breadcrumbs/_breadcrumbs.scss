@@ -1,0 +1,40 @@
+// В этом файле должны быть стили для БЭМ-блока breadcrumbs, его элементов,
+// модификаторов, псевдоселекторов, псевдоэлементов, @media-условий...
+
+@import "../../libraries/variables";
+@import "../../libraries/mixins";
+
+.breadcrumbs {
+  $block-name: &; // #{$block-name}__element
+  order: -1;
+
+  &__list {
+    grid-column: 1 / -1;
+
+    display: flex;
+    align-items: center;
+  }
+
+  &__link {
+    display: flex;
+    align-items: center;
+    color: $gray;
+
+    span {
+      display: block;
+      margin-right: 9px;
+      font-size: 12px;
+    }
+
+    svg {
+      stroke: $gray;
+      margin-top: 1px;
+    }
+  }
+
+  &__text {
+    display: block;
+    margin-left: 9px;
+    font-size: 12px;
+  }
+}

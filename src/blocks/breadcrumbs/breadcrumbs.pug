@@ -1,0 +1,24 @@
+//- Все примеси в этом файле должны начинаться c имени блока ( breadcrumbs )
+
+mixin breadcrumbs( mods )
+
+    -
+        //- класс блока
+        var className = 'breadcrumbs';
+
+        //- список модификаторов
+        var allMods = '';
+        if ( typeof mods !== 'undefined' && mods ) {
+            var modsList = mods.split( ',' );
+            for ( var i = 0; i < modsList.length; i++ ) {
+                allMods = allMods + ' ' + className + '--' + modsList[i].trim();
+            }
+        }
+
+    div( class=className + allMods )&attributes( attributes )
+        ol( class=className + '__list' )
+            li( class=className + '__item' )
+                +button( 'Главная' )( class=className + '__link', href='#' )
+                    include ../../theme/icons/icon-arrow-breadcrumbs.data.pug
+            li( class=className + '__item' )
+                span( class=className + '__text' )= title

@@ -1,0 +1,30 @@
+//- Личный кабинет
+
+extends ../../layout/layout.pug
+
+include ../../blocks/breadcrumbs/breadcrumbs.pug
+include ../../blocks/user/user-panel.pug
+include ../../blocks/user/user-form.pug
+
+block meta
+
+  include user.data.pug
+
+  title=title + " | " + siteName
+  meta( name="description", content=description )
+  meta( name="keywords", content=keywords )
+
+block append head
+  link( rel="canonical" href=siteURL + siteURN )
+  link( rel="stylesheet" href="styles/user.min.css" )
+
+block main
+  +user-form()
+
+block sidebar
+  +user-panel()
+
+
+block append foot
+  script( src="//cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/3.3.4/jquery.inputmask.bundle.min.js" )
+  script( src="scripts/user.min.js" )

@@ -1,0 +1,106 @@
+// В этом файле должны быть стили для БЭМ-блока user-form, его элементов,
+// модификаторов, псевдоселекторов, псевдоэлементов, @media-условий...
+
+@import "../../libraries/variables";
+@import "../../libraries/mixins";
+
+.user-form {
+
+  &__form {
+    padding: 25px 0 15px;
+
+    @media (min-width: $screen-xxl) {
+      padding-top: 0;
+      padding-bottom: 48px
+    }
+
+    .form__legend {
+      margin-bottom: 20px;
+
+      @media (min-width: $screen-xxl) {
+        margin-bottom: 48px;
+      }
+    }
+
+    .form__fieldset {
+      margin-bottom: 30px;
+      padding-bottom: 30px;
+      border-bottom: 1px solid $gray-light;
+
+      @media (min-width: $screen-xxl) {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-column-gap: $grid-gutter-width;
+        grid-row-gap: $grid-gutter-width/2;
+      }
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+
+      &--subscribes {
+        @media (min-width: $screen-xxl) {
+          justify-content: start;
+          grid-template-columns: repeat(3, auto);
+          grid-row-gap: $grid-gutter-width;
+          padding-bottom: 48px;
+        }
+
+        .form__legend {
+          margin-bottom: 10px;
+
+          @media (min-width: $screen-xxl) {
+            margin-bottom: 24px;
+          }
+        }
+      }
+    }
+
+    .form__text {
+      margin-bottom: 25px;
+      padding-right: 16px;
+
+      @media (min-width: $screen-xxl) {
+        grid-column: 1 / -1;
+        margin-bottom: 0;
+      }
+    }
+
+    .field-text {
+      margin-bottom: 20px;
+
+      @media (min-width: $screen-xxl) {
+        margin-bottom: 0;
+      }
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+
+      &--radio {
+        margin-bottom: 0;
+
+        &:last-child {
+          margin-left: 45px;
+        }
+      }
+
+      &--date {
+        margin-bottom: 30px;
+
+        @media (min-width: $screen-xxl) {
+          margin-bottom: 0;
+        }
+      }
+    }
+  }
+
+  &__delete-acc {
+    font-size: 14px;
+    color: $gray;
+
+    @media (min-width: $screen-xxl) {
+      margin-left: auto;
+    }
+  }
+}

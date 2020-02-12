@@ -1,1 +1,0 @@
-import '../../blocks/brands/brands';

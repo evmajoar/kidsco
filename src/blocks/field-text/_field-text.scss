@@ -100,19 +100,145 @@
     }
   }
 
-  &--subscribe {
-    #{$block-name}__name {
-      text-align: center;
+  &--short {
+    #{$block-name}__input {
+      height: 40px;
+    }
+  }
 
-      @media (min-width: $screen-xxl) {
-        margin-bottom: 23px;
-        text-align: right;
+  &--padding {
+    #{$block-name}__input {
+      padding-right: 38px;
+    }
+  }
+
+  &--date {
+    #{$block-name}__input-wrap {
+      position: relative;
+      display: block;
+
+      svg {
+        position: absolute;
+        fill: none;
+        stroke: $gray;
+        height: 24px;
+        width: 24px;
+        top: calc(50% - 12px);
+        right: 12px;
       }
     }
 
     #{$block-name}__input {
-      height: 40px;
-      padding-right: 38px;
+      padding-right: 48px;
+
+      &:focus {
+        + svg {
+          stroke: $purple;
+        }
+      }
+    }
+  }
+
+  &--radio {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+
+    #{$block-name}__name {
+      color: $purple;
+      margin-bottom: 1px;
+    }
+
+    #{$block-name}__input {
+      @include hide-text;
+
+      &:checked {
+        + #{$block-name}__select {
+          border-color: $purple;
+
+          &::before {
+            display: block;
+          }
+        }
+      }
+
+      &-wrap {
+        margin-left: 15px;
+      }
+    }
+
+    #{$block-name}__select {
+      position: relative;
+      display: block;
+      width: 16px;
+      height: 16px;
+      border: 1px solid $gray;
+      border-radius: 50%;
+
+      &::before {
+        @include pseudo;
+        display: none;
+        top: calc(50% - 5px);
+        left: calc(50% - 5px);
+        background: $purple;
+        border-radius: 50%;
+        width: 10px;
+        height: 10px;
+      }
+    }
+  }
+
+  &--checkbox {
+    display: flex;
+    align-items: flex-start;
+    //justify-content: space-between;
+    cursor: pointer;
+
+    #{$block-name}__name {
+      color: $purple;
+      margin-bottom: 1px;
+    }
+
+    #{$block-name}__input {
+      @include hide-text;
+
+      &:checked {
+        + #{$block-name}__select {
+          border-color: $purple;
+          background: $purple;
+
+          &::before {
+            display: block;
+          }
+        }
+      }
+
+      &-wrap {
+        margin: 5px 0 0 auto;
+
+        @media (min-width: $screen-xxl) {
+          margin-left: 16px;
+        }
+      }
+    }
+
+    #{$block-name}__select {
+      position: relative;
+      display: block;
+      width: 16px;
+      height: 16px;
+      border: 1px solid $gray;
+      border-radius: 4px;
+
+      &::before {
+        @include pseudo;
+        display: none;
+        background: url('#{$images-dir}icon-check.svg') center no-repeat;
+        width: 10px;
+        height: 6px;
+        top: calc(50% - 3px);
+        left: calc(50% - 5px);
+      }
     }
   }
 }

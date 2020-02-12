@@ -1,0 +1,94 @@
+// В этом файле должны быть стили для БЭМ-блока user-panel, его элементов,
+// модификаторов, псевдоселекторов, псевдоэлементов, @media-условий...
+
+@import "../../libraries/variables";
+@import "../../libraries/mixins";
+
+.user-panel {
+  $block-name: &; // #{$block-name}__element
+
+  &__header {
+    display: flex;
+    align-items: center;
+  }
+
+  &__avatar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 1px solid #eeecef;
+
+    img {
+      display: block;
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+    }
+  }
+
+  &__title {
+    margin-left: 24px;
+    font-size: 24px;
+    line-height: 32px;
+    font-weight: 700;
+  }
+
+  &__list {
+    margin-top: 45px;
+  }
+
+  &__item {
+    border-top: 1px solid #eeecef;
+    position: relative;
+
+    &-wrapper {
+      display: flex;
+      flex-direction: column;
+      padding: 15px 15px 15px 0;
+      position: relative;
+      z-index: 2;
+      font-size: 14px;
+    }
+
+    svg {
+      position: absolute;
+      top: calc(50% - 5px);
+      right: 0;
+      stroke: $gray;
+      transform: rotate(-180deg);
+      z-index: 1;
+    }
+
+    &--current {
+      #{$block-name}__subtitle,
+      #{$block-name}__text {
+        font-weight: 700;
+      }
+
+      svg {
+        stroke: $purple;
+      }
+    }
+
+    &--logout {
+      @media (min-width: $screen-xxl) {
+        padding-top: (48 - 15)#{px};
+      }
+    }
+  }
+
+  &__subtitle {
+    display: block;
+    font-weight: 400;
+    margin-bottom: 3px;
+  }
+
+  &__text {
+    color: #97a6b5;
+  }
+
+}
