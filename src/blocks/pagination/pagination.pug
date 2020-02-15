@@ -1,0 +1,29 @@
+//- Все примеси в этом файле должны начинаться c имени блока ( pagination )
+
+mixin pagination( mods )
+
+    -
+        //- класс блока
+        var className = 'pagination';
+
+        //- список модификаторов
+        var allMods = '';
+        if ( typeof mods !== 'undefined' && mods ) {
+            var modsList = mods.split( ',' );
+            for ( var i = 0; i < modsList.length; i++ ) {
+                allMods += ' ' + className + '--' + modsList[i].trim();
+            }
+        }
+
+    div( class=className + allMods )&attributes( attributes )
+        +button( 'Назад' )( class=className + '__arrow ' + className + '__arrow--prev' )
+            include ../../theme/icons/icon-arrow-breadcrumbs.data.pug
+        ul( class=className + '__list' )
+            li( class=className + '__list' )
+                +button( '1' )( class=className + '__link' )
+            li( class=className + '__list' )
+                +button( '2' )( class=className + '__link ' + className + '__link--current' )
+            li( class=className + '__list' )
+                +button( '3' )( class=className + '__link' )
+        +button( 'Вперед' )( class=className + '__arrow ' + className + '__arrow--next' )
+            include ../../theme/icons/icon-arrow-breadcrumbs.data.pug

@@ -1,0 +1,152 @@
+//- Все примеси в этом файле должны начинаться c имени блока ( filter )
+
+mixin filter( props, mods )
+
+    -
+        //- класс блока
+        var className = 'filter';
+
+        //- список модификаторов
+        var allMods = '';
+        if ( typeof mods !== 'undefined' && mods ) {
+            var modsList = mods.split( ',' );
+            for ( var i = 0; i < modsList.length; i++ ) {
+                allMods += ' ' + className + '--' + modsList[i].trim();
+            }
+        }
+
+    div( class=className + allMods )
+
+        +form()( class=className + '__form', action='/', method='POST' )
+
+            //- цена
+            +fieldset( "Цена" )
+                p.form__fields-group.form__fields-group--row
+                    +field-text({
+                        attrs: {
+                            id: 'amount-min',
+                            'data-value-min': 0,
+                            type: 'text',
+                            value: '0 ₽'
+                        }
+                    }).field-text__range
+                    +field-text({
+                        attrs: {
+                            id: 'amount-max',
+                            'data-value-max': 99999,
+                            type: 'text',
+                            value: '99 999 ₽'
+                        }
+                    }).field-text__range
+                    span#form__slider-range
+
+            //- пол
+            +fieldset( "Пол" )
+                p.form__fields-group
+                    +field-text({
+                        title: 'Для девочек',
+                        mods: 'radio',
+                        attrs: {
+                            type: 'radio',
+                            name: 'gender',
+                            value: 'Мужской',
+                            checked: true,
+                        }
+                    })
+                    +field-text({
+                        title: 'Для мальчиков',
+                        mods: 'radio',
+                        attrs: {
+                            type: 'radio',
+                            name: 'gender',
+                            value: 'Женский'
+                        }
+                    })
+
+            //- возраст
+            +fieldset( "Возраст" )
+                p.form__fields-group
+                    +field-text({
+                        title: '1-6 месяцев',
+                        mods: 'checkbox',
+                        attrs: {
+                            type: 'checkbox',
+                            name: 'age1',
+                            value: '1-6 месяцев',
+                            checked: true,
+                        }
+                    })
+                    +field-text({
+                        title: '6-12 месяцев',
+                        mods: 'checkbox',
+                        attrs: {
+                            type: 'checkbox',
+                            name: 'age2',
+                            value: '6-12 месяцев',
+                        }
+                    })
+                    +field-text({
+                        title: '1-3 года',
+                        mods: 'checkbox',
+                        attrs: {
+                            type: 'checkbox',
+                            name: 'age3',
+                            value: '1-3 года',
+                        }
+                    })
+                    +field-text({
+                        title: '3-6 лет',
+                        mods: 'checkbox',
+                        attrs: {
+                            type: 'checkbox',
+                            name: 'age3',
+                            value: '3-6 лет',
+                        }
+                    })
+                    +button( 'Показать все' )( class='form__button-more ' + className + '__button-more', type='button' )
+
+            //- бренд
+            +fieldset( "Бренд" )
+                p.form__fields-group
+                    +field-text({
+                        title: 'Bauer',
+                        mods: 'checkbox',
+                        attrs: {
+                            type: 'checkbox',
+                            name: 'brand1',
+                            value: 'Bauer',
+                            checked: true,
+                        }
+                    })
+                    +field-text({
+                        title: 'Disney',
+                        mods: 'checkbox',
+                        attrs: {
+                            type: 'checkbox',
+                            name: 'brand2',
+                            value: 'Disney',
+                        }
+                    })
+                    +field-text({
+                        title: 'Caterpillar',
+                        mods: 'checkbox',
+                        attrs: {
+                            type: 'checkbox',
+                            name: 'brand3',
+                            value: 'Caterpillar',
+                        }
+                    })
+                    +field-text({
+                        title: 'Chicco',
+                        mods: 'checkbox',
+                        attrs: {
+                            type: 'checkbox',
+                            name: 'brand4',
+                            value: 'Chicco',
+                        }
+                    })
+                    +button( 'Показать все' )( class='form__button-more ' + className + '__button-more', type='button' )
+
+            p.form__buttons-group
+                +button( 'Показать <b>700</b> товаров', 'btn-border' )( class='form__button-submit ' + className + '__button-submit', type='submit' )
+                +button( 'Очистить все' )( class='form__button-reset ' + className + '__button-reset', type='reset' )

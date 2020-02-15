@@ -1,0 +1,26 @@
+//- Все примеси в этом файле должны начинаться c имени блока ( sort-select )
+
+mixin sort-select( mods )
+
+    -
+        //- класс блока
+        var className = 'sort-select';
+
+        //- список модификаторов
+        var allMods = '';
+        if ( typeof mods !== 'undefined' && mods ) {
+            var modsList = mods.split( ',' );
+            for ( var i = 0; i < modsList.length; i++ ) {
+                allMods += ' ' + className + '--' + modsList[i].trim();
+            }
+        }
+
+    //- Данные
+    include sort.data.pug
+
+    div( class=className + allMods )
+        span( class=className + '__title' ) Сортировка:
+        div( class=className + '__wrapper' )
+            select( name="sort-select" id="sort-select" )
+                each item in ssData
+                    option= item

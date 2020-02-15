@@ -127,6 +127,21 @@
     }
   }
 
+  &--btn-more {
+    font-size: 14px;
+    height: 48px;
+    border: 1px solid $purple;
+    border-radius: 4px;
+    min-width: 100%;
+
+    &:hover {
+      @media (min-width: $screen-xxl) {
+        background: $purple;
+        color: $white;
+      }
+    }
+  }
+
   &--disabled,
   &:disabled {
     opacity: $button-opacity;

@@ -16,6 +16,7 @@
     @extend .container;
     padding-top: 20px;
     padding-bottom: 50px;
+    justify-content: center;
 
     @media (min-width: $screen-xxl) {
       padding-top: 50px;
@@ -31,7 +32,7 @@
       margin-bottom: 25px;
 
       @media (min-width: $screen-xxl) {
-        margin-bottom: 45px;
+        margin-bottom: 40px;
       }
     }
 
@@ -50,8 +51,8 @@
     }
 
     &--index {
-      padding-top: 0;
-      padding-bottom: 40px;
+      padding: 0 0 40px;
+      max-width: 100%;
 
       @media (min-width: $screen-xxl) {
         padding-bottom: 0;
@@ -61,7 +62,7 @@
 
   &__title {
     font-size: 32px;
-    margin-top: 15px;
+    //margin-top: 15px;
   }
 
   &__footer {

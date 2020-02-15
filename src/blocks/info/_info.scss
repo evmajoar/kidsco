@@ -6,9 +6,9 @@
 
 .info {
   $block-name: &; // #{$block-name}__element
+  border-top: 1px solid #97a6b5;
 
   &__container {
-    border-top: 1px solid #97a6b5;
     padding-top: 37px;
     padding-bottom: 37px;
 

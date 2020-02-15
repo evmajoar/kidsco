@@ -1,0 +1,26 @@
+@import "../../layout/layout";
+
+@import "../../blocks/breadcrumbs/breadcrumbs";
+@import "../../blocks/filter/filter";
+@import "../../blocks/sort/sort-buttons";
+@import "../../blocks/sort/sort-select";
+@import "../../blocks/card/card";
+@import "../../blocks/pagination/pagination";
+@import "../../blocks/text-description/text-description";
+
+.catalog-list {
+  @media (min-width: $screen-xxl) {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-column-gap: $grid-gutter-width;
+    grid-row-gap: $grid-gutter-width;
+  }
+}
+
+.catalog-buttons {
+  margin-top: 40px;
+
+  @media (min-width: $screen-xxl) {
+    margin-top: 48px;
+  }
+}

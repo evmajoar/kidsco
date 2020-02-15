@@ -94,6 +94,7 @@ function buildJs() {
     return src( [
         `./${root.src}pages/index/index.js`,
         `./${root.src}pages/user/user.js`,
+        `./${root.src}pages/catalog/catalog.js`,
     ] )
         .pipe( plumber( {
             errorHandler: notify.onError( {
@@ -104,7 +105,8 @@ function buildJs() {
         .pipe( webpackStream({
             entry: {
                 index: `./${root.src}pages/index/index.js`,
-                user: `./${root.src}pages/user/user.js`
+                user: `./${root.src}pages/user/user.js`,
+                catalog: `./${root.src}pages/catalog/catalog.js`
             },
             mode: 'production',
             output: {

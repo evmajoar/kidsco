@@ -1,0 +1,48 @@
+//- Личный кабинет
+
+extends ../../layout/layout.pug
+
+include ../../blocks/breadcrumbs/breadcrumbs.pug
+include ../../blocks/filter/filter.pug
+include ../../blocks/sort/sort-buttons.pug
+include ../../blocks/sort/sort-select.pug
+include ../../blocks/card/card
+include ../../blocks/pagination/pagination
+include ../../blocks/text-description/text-description
+
+block meta
+
+  include catalog.data.pug
+
+  title=title + " | " + siteName
+  meta( name="description", content=description )
+  meta( name="keywords", content=keywords )
+
+block append head
+  link( rel="canonical" href=siteURL + siteURN )
+  link( rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css" )
+  link( rel="stylesheet" href="styles/catalog.min.css" )
+
+block main
+  include ../../blocks/card/card.data.pug
+
+  +sort-buttons()
+  +sort-select()
+
+  ul.catalog-list
+    +card( cardData1, 'li', false, 'catalog' )
+
+  p.catalog-buttons
+    +button( 'Показать еще', 'btn-more' )
+
+  +pagination()
+
+block sidebar
+  +filter()
+
+block text
+  +text-description()
+
+block append foot
+  script( src="//cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" )
+  script( src="scripts/catalog.min.js" )

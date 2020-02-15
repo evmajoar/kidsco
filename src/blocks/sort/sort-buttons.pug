@@ -1,0 +1,33 @@
+//- Все примеси в этом файле должны начинаться c имени блока ( sort-buttons )
+
+mixin sort-buttons( mods )
+
+    -
+        //- класс блока
+        var className = 'sort-buttons';
+
+        //- список модификаторов
+        var allMods = '';
+        if ( typeof mods !== 'undefined' && mods ) {
+            var modsList = mods.split( ',' );
+            for ( var i = 0; i < modsList.length; i++ ) {
+                allMods += ' ' + className + '--' + modsList[i].trim();
+            }
+        }
+
+    //- Данные
+    include sort.data.pug
+
+    div( class=className + allMods )
+
+        ul( class=className + '__list' )
+            each item, index in sbData
+                if( index === 1 )
+                    li( class=className + '__item' )
+                        +button( item, 'btn-border' )( class=className + '__button ' + className + '__button--selected' )
+                else
+                    li( class=className + '__item' )
+                        +button( item, 'btn-border' )( class=className + '__button' )
+
+        +button( 'Показать все', 'btn-border' )( class=className + '__button ' + className + '__button--show-all' )
+            include ../../theme/icons/icon-arrow-breadcrumbs.data.pug

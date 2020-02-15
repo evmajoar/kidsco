@@ -171,4 +171,24 @@
       }
     }
   }
+
+  &--catalog {
+    margin-bottom: 30px;
+
+    @media (min-width: $screen-xxl) {
+      margin-bottom: 0;
+    }
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    #{$block-name}__discount {
+      margin-right: 24px;
+    }
+
+    //#{$block-name}__button {
+    //  display: none;
+    //}
+  }
 }

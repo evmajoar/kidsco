@@ -1,0 +1,55 @@
+// В этом файле должны быть стили для БЭМ-блока pagination, его элементов,
+// модификаторов, псевдоселекторов, псевдоэлементов, @media-условий...
+
+@import "../../libraries/variables";
+@import "../../libraries/mixins";
+
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  padding-top: 24px;
+
+  &__list {
+    display: flex;
+    align-items: center;
+  }
+
+  &__arrow {
+    span {
+      @include hide-text;
+    }
+
+    svg {
+      stroke: $purple;
+      width: 8px;
+      height: 12px;
+    }
+
+    &--prev {
+      margin-right: 50px;
+
+      svg {
+        transform: rotate(-180deg);
+      }
+    }
+
+    &--next {
+      margin-left: 50px;
+    }
+  }
+
+  &__link {
+    display: block;
+    border-radius: 4px;
+    font-size: 14px;
+    height: 48px;
+    width: 48px;
+
+    &--current {
+      background-color: #efeeef;
+      color: $purple;
+    }
+  }
+}
