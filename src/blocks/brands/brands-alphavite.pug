@@ -1,0 +1,25 @@
+//- Все примеси в этом файле должны начинаться c имени блока ( brands-alphavite )
+
+mixin brands-alphavite( mods )
+
+    -
+        //- класс блока
+        var className = 'brands-alphavite';
+
+        //- список модификаторов
+        var allMods = '';
+        if ( typeof mods !== 'undefined' && mods ) {
+            var modsList = mods.split( ',' );
+            for ( var i = 0; i < modsList.length; i++ ) {
+                allMods = allMods + ' ' + className + '--' + modsList[i].trim();
+            }
+        }
+
+    include brands.data.pug
+
+    section( class=className + allMods )&attributes( attributes )
+        h2( class=className + '__title' ) Бренды A-Z
+        ul( class=className + '__list' )
+            each item in brandsAlphavite
+                li( class=className + '__item' )
+                    +button(item)( class=className + '__link', href='#' )

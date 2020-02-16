@@ -241,4 +241,33 @@
       }
     }
   }
+
+  &--search {
+    #{$block-name}__name {
+      @include hide-text;
+    }
+
+    #{$block-name}__input-wrap {
+      position: relative;
+    }
+
+    #{$block-name}__input {
+      border: 0;
+      border-bottom: 1px solid #97a6b5;
+      padding-left: 0;
+      padding-right: 20px;
+
+      &:focus + svg {
+        stroke: $purple;
+      }
+    }
+
+    svg {
+      position: absolute;
+      right: 0;
+      top: calc( 50% - (18px / 2) );
+      stroke: #97a6b5;
+      fill: none;
+    }
+  }
 }

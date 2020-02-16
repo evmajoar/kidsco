@@ -1,0 +1,23 @@
+//- Все примеси в этом файле должны начинаться c имени блока ( brands-table )
+
+mixin brands-table( title, props, mods )
+
+    -
+        //- класс блока
+        var className = 'brands-table';
+
+        //- список модификаторов
+        var allMods = '';
+        if ( typeof mods !== 'undefined' && mods ) {
+            var modsList = mods.split( ',' );
+            for ( var i = 0; i < modsList.length; i++ ) {
+                allMods = allMods + ' ' + className + '--' + modsList[i].trim();
+            }
+        }
+
+    li(class=className + allMods )
+        h3( class=className + '__title' )= title
+        ul( class=className + '__list' )
+            each item in props
+                li( class=className + '__item' )
+                    +button( item, 'link' )( class=className + '__link' )

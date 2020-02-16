@@ -60,6 +60,8 @@ mixin field-text( props )
           span( class=className + '__select' )
         if ( props.mods === 'date' )
           include ../../theme/icons/icon-date.data.pug
+        if (props.mods === 'search')
+          include ../../theme/icons/icon-search.pug
 
       if ( typeof props.helpText !== 'undefined' && props.helpText )
         span( class=fieldHelpText )= props.helpText

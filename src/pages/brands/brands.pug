@@ -1,0 +1,47 @@
+//- Личный кабинет
+
+extends ../../layout/layout.pug
+
+include ../../blocks/breadcrumbs/breadcrumbs.pug
+include ../../blocks/sort/sort-buttons
+include ../../blocks/brands/brands-list
+include ../../blocks/brands/brands-table
+include ../../blocks/brands/brands-alphavite
+include ../../blocks/search/search
+include ../../blocks/text-description/text-description
+
+block meta
+
+  include brands.data.pug
+
+  title=title + " | " + siteName
+  meta( name="description", content=description )
+  meta( name="keywords", content=keywords )
+
+block append head
+  link( rel="canonical" href=siteURL + siteURN )
+  link( rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css" )
+  link( rel="stylesheet" href="styles/brands.min.css" )
+
+block main
+
+  include ../../blocks/brands/brands.data.pug
+
+  +sort-buttons()
+  +brands-list( brandsList )
+
+  section.brands-full-list
+    ul.brands-full-list__list
+      +brands-table( 'A', brandsTableListA )
+      +brands-table( 'B', brandsTableListB )
+
+block sidebar
+  +brands-alphavite()
+  +search()
+
+block text
+  +text-description()
+
+block append foot
+  script( src="//cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" )
+  script( src="scripts/brands.min.js" )

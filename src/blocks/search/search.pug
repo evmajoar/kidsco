@@ -1,0 +1,28 @@
+//- Все примеси в этом файле должны начинаться c имени блока ( search )
+
+mixin search( mods )
+
+    -
+        //- класс блока
+        var className = 'search';
+
+        //- список модификаторов
+        var allMods = '';
+        if ( typeof mods !== 'undefined' && mods ) {
+            var modsList = mods.split( ',' );
+            for ( var i = 0; i < modsList.length; i++ ) {
+                allMods = allMods + ' ' + className + '--' + modsList[i].trim();
+            }
+        }
+
+    div( class=className + allMods )&attributes( attributes )
+        +form()( class=className + '__form', action='/', method='POST' )
+            +fieldset( "Поиск брендов" )
+                +field-text({
+                    title: 'Поиск брендов',
+                    mods: 'search',
+                    attrs: {
+                        type: 'search',
+                        placeholder: "Поиск брендов"
+                    }
+                })

@@ -1,0 +1,28 @@
+//- Все примеси в этом файле должны начинаться c имени блока ( brands-list )
+
+mixin brands-list( props, mods )
+
+    -
+        //- класс блока
+        var className = 'brands-list';
+
+        //- список модификаторов
+        var allMods = '';
+        if ( typeof mods !== 'undefined' && mods ) {
+            var modsList = mods.split( ',' );
+            for ( var i = 0; i < modsList.length; i++ ) {
+                allMods = allMods + ' ' + className + '--' + modsList[i].trim();
+            }
+        }
+
+
+    section( class=className + allMods )&attributes( attributes )
+        h2( class=className + '__title' ) Топ бренды
+            ul( class=className + '__list' )
+                each item in props
+                    li( class=className + '__item' )
+                        picture( class=className + '__picture' )
+                            source( srcset=setting.imagesSrc + item.srcWP, type='image/webp' )
+                            img( src=setting.imagesSrc + item.srcPNG, alt=item.title )
+                        a( class=className + '__item-wrapper', href='#' )
+                            h3( class=className + '__item-title')= item.title

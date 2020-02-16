@@ -1,0 +1,41 @@
+// В этом файле должны быть стили для БЭМ-блока brands-alphavite, его элементов,
+// модификаторов, псевдоселекторов, псевдоэлементов, @media-условий...
+
+@import "../../libraries/variables";
+@import "../../libraries/mixins";
+
+.brands-alphavite {
+  $block-name: &; // #{$block-name}__element
+
+  &__title {
+    font-size: 14px;
+    margin-bottom: 10px;
+  }
+
+  &__list {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  &__item {
+    margin-right: 25px;
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+
+  &__link {
+    font-size: 14px;
+    font-weight: 400;
+    text-transform: uppercase;
+    color: #97a6b5;
+    line-height: 40px;
+
+    &:hover {
+      @media (min-width: $screen-xxl) {
+        color: #332638;
+      }
+    }
+  }
+}

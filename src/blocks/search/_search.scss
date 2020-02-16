@@ -1,0 +1,15 @@
+// В этом файле должны быть стили для БЭМ-блока search, его элементов,
+// модификаторов, псевдоселекторов, псевдоэлементов, @media-условий...
+
+@import "../../libraries/variables";
+@import "../../libraries/mixins";
+
+.search {
+  $block-name: &; // #{$block-name}__element
+
+  padding-top: 30px;
+
+  .form__legend {
+    @include hide-text;
+  }
+}

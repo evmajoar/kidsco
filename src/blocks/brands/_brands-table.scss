@@ -1,0 +1,59 @@
+// В этом файле должны быть стили для БЭМ-блока brands-table, его элементов,
+// модификаторов, псевдоселекторов, псевдоэлементов, @media-условий...
+
+@import "../../libraries/variables";
+@import "../../libraries/mixins";
+
+.brands-table {
+  $block-name: &; // #{$block-name}__element
+
+  padding-top: 20px;
+
+  @media (min-width: $screen-xxl) {
+    padding-top: 40px;
+  }
+
+  &:first-child {
+    @media (min-width: $screen-xxl) {
+      padding-top: 48px;
+    }
+  }
+
+  &__title {
+    font-size: 24px;
+    font-weight: 400;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+
+    @media (min-width: $screen-xxl) {
+      font-weight: 700;
+    }
+  }
+
+  &__list {
+    margin-top: 10px;
+
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+
+    @media (min-width: $screen-xxl) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  &__item {
+    margin-bottom: 20px;
+  }
+
+  &__link {
+    color: #97a6b5;
+    font-size: 14px;
+    font-weight: 400;
+
+    &:hover {
+      @media (min-width: $screen-xxl) {
+        color: $purple;
+      }
+    }
+  }
+}
