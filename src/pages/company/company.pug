@@ -1,0 +1,108 @@
+//- Личный кабинет
+
+extends ../../layout/layout.pug
+
+include ../../blocks/breadcrumbs/breadcrumbs.pug
+include ../../blocks/side-nav/side-nav.pug
+
+block meta
+
+  include company.data.pug
+
+  title=title + " | " + siteName
+  meta( name="description", content=description )
+  meta( name="keywords", content=keywords )
+
+block append head
+  link( rel="canonical" href=siteURL + siteURN )
+  link( rel="stylesheet" href="styles/company.min.css" )
+
+block main
+
+  section.about
+    h2.about__title О компании
+    p.about__text
+      | Kids & Co – крупнейший интернет-магазин в Европе. Более двух тысяч брендов. Среди них – BCONB, Be mine, Bel, Benetton, Undercolors, BILLIEBLUSH, Bluepoint, Bogi. Своим клиентам мы предоставляем безупречный сервис и возможность совершать покупки по европейским ценам.
+
+  section.about-adress
+    h2.about-adress__title Адреса магазинов
+    div.about-adress__map
+      img(src='images/map.jpg', alt='Заглушка-карта')
+    ul.about-adress__list
+      li.about-adress__item
+        h3.about-adress__item-title Kids & Co
+        p.about-adress__item-text
+          span.about-adress__item-text-title Адрес
+          | Санкт-Петербург #[br] Ул. Ленина, д. 7 #[br] 197136
+        p.about-adress__item-text
+          span.about-adress__item-text-title Время работы
+          span.about-adress__item-text-text Пн-Пт: #[b с 10:00 до 22:00]
+          span.about-adress__item-text-text Сб-Вс: #[b с 11:00 до 22:00]
+        p.about-adress__item-text
+          span.about-adress__item-text-title Телефон
+          a.about-adress__item-text-tel( href='tel:+88000000000' ) +88000000000
+          a.about-adress__item-text-tel( href='tel:+88000000000' ) +7 (123) 000 0000
+      li.about-adress__item
+        h3.about-adress__item-title Kids & Co
+        p.about-adress__item-text
+          span.about-adress__item-text-title Адрес
+          | Санкт-Петербург #[br] Ул. Ленина, д. 7 #[br] 197136
+        p.about-adress__item-text
+          span.about-adress__item-text-title Время работы
+          span.about-adress__item-text-text Пн-Пт: #[b с 10:00 до 22:00]
+          span.about-adress__item-text-text Сб-Вс: #[b с 11:00 до 22:00]
+        p.about-adress__item-text
+          span.about-adress__item-text-title Телефон
+          a.about-adress__item-text-tel( href='tel:+88000000000' ) +88000000000
+          a.about-adress__item-text-tel( href='tel:+88000000000' ) +7 (123) 000 0000
+
+  section.about-feedback
+    h2.about-feedback__title Напишите нам
+    +form()( class='about-feedback__form', action='/', method='POST' )
+      +fieldset( "Форма обратной связи" )
+        +field-text({
+          title: 'Имя',
+          attrs: {
+            type: 'text',
+            placeholder: "Имя"
+          }
+        })
+        +field-text({
+          title: 'Телефон*',
+          mods: 'phone',
+          attrs: {
+            type: 'tel',
+            placeholder: "Телефон"
+          }
+        })
+        +field-text({
+          title: 'Email*',
+          attrs: {
+            type: 'email',
+            placeholder: "example@mail.com"
+          }
+        })
+        +field-text({
+          title: "Название",
+          mods: 'textarea',
+          isTextarea: true,
+          attrs: {
+            placeholder: 'Написать сообщение'
+          }
+        })
+        div.form__footer
+          p.form__text
+            | Нажимая кнопку «Отправить», вы соглашаетесь на обработку персональных данных в соответствии с
+            a(href='#') Политикой конфиденциальности.
+          +button( 'Отправить', 'btn-border, btn-purple' )
+
+block sidebar
+  include ../../blocks/side-nav/side-nav.data.pug
+
+  +side-nav(slData2)
+
+block text
+
+block append foot
+  script( src="//cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/3.3.4/jquery.inputmask.bundle.min.js" )
+  script( src="scripts/company.min.js" )

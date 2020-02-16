@@ -34,9 +34,11 @@ block main
       +journal( journalData2, 'direction-rl' )
 
 block sidebar
-  +side-nav()
+  include ../../blocks/side-nav/side-nav.data.pug
+
+  +side-nav(slData)
   +search( 'Поиск' )
-  +sort-select( false, 'theme-border' )
+  +sort-select()
 
 block text
   +text-description()

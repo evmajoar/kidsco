@@ -1,6 +1,6 @@
 //- Все примеси в этом файле должны начинаться c имени блока ( side-nav )
 
-mixin side-nav( mods )
+mixin side-nav( props, mods )
 
     -
         //- класс блока
@@ -15,14 +15,14 @@ mixin side-nav( mods )
             }
         }
 
-        var sLinks = [
-            'Новости', 'Статьи'
-        ];
+        // var sLinks = [
+        //     'Новости', 'Статьи'
+        // ];
 
     ul( class=className + allMods )
-        each item, index in sLinks
+        each item, index in props
             li( class=className + '__item' )
-                if( index !== (sLinks.length - 1) )
+                if( index !== (props.length - 1) )
                     a( class=className + '__link', href='#' )= item
                 else
                     a( class=className + '__link ' + className + '__link--current', href='#' )= item

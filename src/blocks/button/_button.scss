@@ -127,6 +127,22 @@
     }
   }
 
+  &--btn-purple {
+    background-color: $purple;
+    color: $white;
+    min-width: 176px;
+    height: 48px;
+    font-weight: 400;
+    border-radius: 24px;
+
+    &:hover {
+      @media (min-width: $screen-xxl) {
+        background-color: $white;
+        color: $purple;
+      }
+    }
+  }
+
   &--btn-more {
     font-size: 14px;
     height: 48px;

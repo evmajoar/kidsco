@@ -1,0 +1,170 @@
+// В этом файле должны быть стили для БЭМ-блока about, его элементов,
+// модификаторов, псевдоселекторов, псевдоэлементов, @media-условий...
+
+@import "../../libraries/variables";
+@import "../../libraries/mixins";
+
+.about {
+  padding-top: 30px;
+
+  @media (min-width: $screen-xxl) {
+    padding-top: 0;
+    margin-top: -75px;
+  }
+
+  &__title {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+
+  &__text {
+    font-size: 24px;
+    font-weight: 300;
+  }
+
+  &-adress {
+    padding-top: 45px;
+
+    @media (min-width: $screen-xxl) {
+      padding-top: 52px;
+    }
+
+    &__title {
+      font-size: 24px;
+      margin-bottom: 30px;
+    }
+
+    &__map {
+      height: 460px;
+      width: calc( 100% + 60px );
+      margin-left: -30px;
+
+      @media (min-width: $screen-xxl) {
+        margin-left: 0;
+        width: 100%;
+      }
+
+      img {
+        object-fit: cover;
+        height: 100%;
+      }
+    }
+
+    &__list {
+      margin-top: 30px;
+    }
+
+    &__item {
+     margin-bottom: 25px;
+
+      @media (min-width: $screen-xxl) {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-column-gap: $grid-gutter-width;
+      }
+
+      &-title {
+        margin-bottom: 15px;
+
+        @media (min-width: $screen-xxl) {
+          grid-column: 1 / -1;
+        }
+      }
+
+      &-text {
+        line-height: 28px;
+        margin-bottom: 15px;
+
+        @media (min-width: $screen-xxl) {
+          margin-bottom: 0;
+        }
+
+        &-tel {
+          display: block;
+        }
+
+        &-text {
+          display: flex;
+
+          b {
+            margin-left: auto;
+            font-weight: 400;
+          }
+        }
+
+        &:last-child {
+          margin-bottom: 0;
+        }
+
+        &-title {
+          display: block;
+          font-size: 14px;
+          font-weight: 700;
+        }
+      }
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  &-feedback {
+    padding-top: 45px;
+
+    @media (min-width: $screen-xxl) {
+      max-width: 624px;
+      width: 100%;
+    }
+
+    &__title {
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+
+    .form__legend {
+      @include hide-text;
+    }
+
+    .field-text {
+      margin-bottom: 20px;
+
+      @media (min-width: $screen-xxl) {
+        width: 288px;
+      }
+
+      &--textarea {
+        .field-text__name {
+          @include hide-text;
+        }
+
+        .field-text__input {
+          padding: 16px;
+          height: 150px;
+        }
+
+        @media (min-width: $screen-xxl) {
+          width: 100%
+        }
+      }
+    }
+
+    .form__footer {
+      @media (min-width: $screen-xxl) {
+        display: flex;
+        align-items: flex-end;
+      }
+    }
+
+    .form__text {
+      font-size: 12px;
+      color: #97a6b5;
+      margin-bottom: 24px;
+
+      @media (min-width: $screen-xxl) {
+        margin-right: 140px;
+        margin-bottom: 0;
+      }
+    }
+  }
+}
