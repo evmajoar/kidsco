@@ -19,7 +19,7 @@ mixin journal( props, mods )
 
         //- текстовое описание
         div( class=className + '__description' )
-            span.category( class=className + '__category' ) Журнал
+            span.category( class=className + '__category' )= props.category
             h2.title( class=className + '__title' )= props.title
             p( class=className + '__text' )= props.text
             +button( 'Читать статью', 'link-arrow' )( class=className + '__link', href='#' )

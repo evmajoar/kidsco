@@ -1,0 +1,33 @@
+@import "../../layout/layout";
+
+@import "../../blocks/breadcrumbs/breadcrumbs";
+@import "../../blocks/sort/sort-buttons";
+@import "../../blocks/sort/sort-select2";
+@import "../../blocks/search/search";
+@import "../../blocks/side-nav/side-nav";
+@import "../../blocks/journal/journal";
+@import "../../blocks/text-description/text-description";
+
+.journal-full-list {
+  padding-top: 20px;
+
+  @media (min-width: $screen-xxl) {
+    padding-top: 24px;
+  }
+}
+
+.journal-full-item {
+  margin-bottom: 20px;
+
+  @media (min-width: $screen-xxl) {
+    margin-bottom: 49px;
+  }
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  .journal {
+    width: auto !important;
+  }
+}

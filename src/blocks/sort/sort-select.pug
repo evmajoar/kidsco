@@ -1,6 +1,6 @@
 //- Все примеси в этом файле должны начинаться c имени блока ( sort-select )
 
-mixin sort-select( mods )
+mixin sort-select( showTitle, mods )
 
     -
         //- класс блока
@@ -19,7 +19,8 @@ mixin sort-select( mods )
     include sort.data.pug
 
     div( class=className + allMods )
-        span( class=className + '__title' ) Сортировка:
+        if( showTitle )
+            span( class=className + '__title' ) Сортировка:
         div( class=className + '__wrapper' )
             select( name="sort-select" id="sort-select" )
                 each item in ssData

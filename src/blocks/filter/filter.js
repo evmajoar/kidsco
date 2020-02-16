@@ -7,6 +7,7 @@ var amountMin = $( '#amount-min' ),
     rangeContainer= $( '#form__slider-range' );
 
 rangeContainer.slider({
+    animate: 'slow',
     range: true,
     min: parseAmountMinVal,
     max: parseAmountMaxVal,
@@ -14,6 +15,10 @@ rangeContainer.slider({
         parseAmountMinVal,
         parseAmountMaxVal
     ],
+    stop: function( event, ui ) {
+        amountMin.val( ui.values[ 0 ].toLocaleString() + ' ₽' );
+        amountMax.val( ui.values[ 1 ].toLocaleString() + ' ₽' );
+    },
     slide: function( event, ui ) {
         amountMin.val( ui.values[ 0 ].toLocaleString() + ' ₽' );
         amountMax.val( ui.values[ 1 ].toLocaleString() + ' ₽' );

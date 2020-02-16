@@ -1,0 +1,31 @@
+//- Все примеси в этом файле должны начинаться c имени блока ( side-nav )
+
+mixin side-nav( mods )
+
+    -
+        //- класс блока
+        var className = 'side-nav';
+
+        //- список модификаторов
+        var allMods = '';
+        if ( typeof mods !== 'undefined' && mods ) {
+            var modsList = mods.split( ',' );
+            for ( var i = 0; i < modsList.length; i++ ) {
+                allMods = allMods + ' ' + className + '--' + modsList[i].trim();
+            }
+        }
+
+        var sLinks = [
+            'Новости', 'Статьи'
+        ];
+
+    ul( class=className + allMods )
+        each item, index in sLinks
+            li( class=className + '__item' )
+                if( index !== (sLinks.length - 1) )
+                    a( class=className + '__link', href='#' )= item
+                else
+                    a( class=className + '__link ' + className + '__link--current', href='#' )= item
+
+
+

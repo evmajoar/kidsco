@@ -7,7 +7,7 @@
 .search {
   $block-name: &; // #{$block-name}__element
 
-  padding-top: 30px;
+  //padding-top: 30px;
 
   .form__legend {
     @include hide-text;

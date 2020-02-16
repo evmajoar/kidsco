@@ -256,9 +256,14 @@
       border-bottom: 1px solid #97a6b5;
       padding-left: 0;
       padding-right: 20px;
+      padding-top: 0;
 
-      &:focus + svg {
-        stroke: $purple;
+      &:focus {
+        border-bottom-color: $purple;
+
+        + svg {
+          stroke: $purple;
+        }
       }
     }
 

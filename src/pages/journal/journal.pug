@@ -4,15 +4,15 @@ extends ../../layout/layout.pug
 
 include ../../blocks/breadcrumbs/breadcrumbs.pug
 include ../../blocks/sort/sort-buttons
-include ../../blocks/brands/brands-list
-include ../../blocks/brands/brands-table
-include ../../blocks/brands/brands-alphavite
+include ../../blocks/side-nav/side-nav.pug
 include ../../blocks/search/search
+include ../../blocks/sort/sort-select.pug
+include ../../blocks/journal/journal
 include ../../blocks/text-description/text-description
 
 block meta
 
-  include brands.data.pug
+  include journal.data.pug
 
   title=title + " | " + siteName
   meta( name="description", content=description )
@@ -21,27 +21,26 @@ block meta
 block append head
   link( rel="canonical" href=siteURL + siteURN )
   link( rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css" )
-  link( rel="stylesheet" href="styles/brands.min.css" )
+  link( rel="stylesheet" href="styles/journal.min.css" )
 
 block main
-
-  include ../../blocks/brands/brands.data.pug
+  include ../../blocks/journal/journal.data.pug
 
   +sort-buttons()
-  +brands-list( brandsList )
-
-  section.brands-full-list
-    ul.brands-full-list__list
-      +brands-table( 'A', brandsTableListA )
-      +brands-table( 'B', brandsTableListB )
+  ul.journal-full-list
+    li.journal-full-item
+      +journal( journalData1, 'direction-lr' )
+    li.journal-full-item
+      +journal( journalData2, 'direction-rl' )
 
 block sidebar
-  +brands-alphavite()
-  +search( 'Поиск брендов' )
+  +side-nav()
+  +search( 'Поиск' )
+  +sort-select( false, 'theme-border' )
 
 block text
   +text-description()
 
 block append foot
   script( src="//cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" )
-  script( src="scripts/brands.min.js" )
+  script( src="scripts/journal.min.js" )

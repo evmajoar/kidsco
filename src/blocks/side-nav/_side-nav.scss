@@ -1,0 +1,23 @@
+// В этом файле должны быть стили для БЭМ-блока side-nav, его элементов,
+// модификаторов, псевдоселекторов, псевдоэлементов, @media-условий...
+
+@import "../../libraries/variables";
+@import "../../libraries/mixins";
+
+.side-nav {
+  $block-name: &; // #{$block-name}__element
+
+  &__item {
+    margin-bottom: 32px;
+  }
+
+  &__link {
+    color: #97a6b5;
+    font-size: 14px;
+
+    &--current {
+      color: $purple;
+      font-weight: 700;
+    }
+  }
+}

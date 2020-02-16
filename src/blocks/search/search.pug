@@ -1,6 +1,6 @@
 //- Все примеси в этом файле должны начинаться c имени блока ( search )
 
-mixin search( mods )
+mixin search( title, mods )
 
     -
         //- класс блока
@@ -17,12 +17,12 @@ mixin search( mods )
 
     div( class=className + allMods )&attributes( attributes )
         +form()( class=className + '__form', action='/', method='POST' )
-            +fieldset( "Поиск брендов" )
+            +fieldset( title )
                 +field-text({
-                    title: 'Поиск брендов',
+                    title: title,
                     mods: 'search',
                     attrs: {
                         type: 'search',
-                        placeholder: "Поиск брендов"
+                        placeholder: title
                     }
                 })

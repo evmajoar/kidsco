@@ -96,6 +96,7 @@ function buildJs() {
         `./${root.src}pages/user/user.js`,
         `./${root.src}pages/catalog/catalog.js`,
         `./${root.src}pages/brands/brands.js`,
+        `./${root.src}pages/journal/journal.js`,
     ] )
         .pipe( plumber( {
             errorHandler: notify.onError( {
@@ -109,6 +110,7 @@ function buildJs() {
                 user: `./${root.src}pages/user/user.js`,
                 catalog: `./${root.src}pages/catalog/catalog.js`,
                 brands: `./${root.src}pages/brands/brands.js`,
+                journal: `./${root.src}pages/journal/journal.js`,
             },
             mode: 'production',
             output: {
