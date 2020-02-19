@@ -1,0 +1,35 @@
+//- Все примеси в этом файле должны начинаться c имени блока ( order-info )
+
+mixin order-info( mods )
+
+    -
+        //- класс блока
+        var className = 'order-info';
+
+        //- список модификаторов
+        var allMods = '';
+        if ( typeof mods !== 'undefined' && mods ) {
+            var modsList = mods.split( ',' );
+            for ( var i = 0; i < modsList.length; i++ ) {
+                allMods += ' ' + className + '--' + modsList[i].trim();
+            }
+        }
+
+    div( class=className + allMods )
+        p( class=className + '__header' )
+            b( class=className + '__text' ) В корзине 3 товара
+            +button( 'Изменить' )( class=className + '__header-button' )
+        p( class=className + '__content' )
+            span( class=className + '__old-price' )
+                s 6 567
+            span( class=className + '__new-price' ) 3 970 ₽
+        div( class=className + '__footer' )
+            p( class=className + '__footer-info' )
+                | Самовывоз из магазина
+                b Бесплатно
+            p( class=className + '__footer-buttons' )
+                +button( 'Оформить заказ', 'btn-purple' )( class=className + '__footer-button ' + className + '__footer-button--checkout' )
+                +button( 'Быстрый заказ', 'btn-border' )( class=className + '__footer-button ' + className + '__footer-button--quick-order' )
+            p( class=className + '__footer-policy' )
+                | Завершая оформление заказа, я даю своё согласие на обработку персональных данных и подтверждаю ознакомление с
+                a( href='#' ) условиями

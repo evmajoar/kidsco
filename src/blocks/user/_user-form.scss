@@ -7,35 +7,32 @@
 .user-form {
 
   &__form {
-    padding: 25px 0 15px;
+    padding: 25px 0 0;
 
     @media (min-width: $screen-xxl) {
       padding-top: 0;
-      padding-bottom: 48px
+      padding-bottom: 15px
     }
 
     .form__legend {
-      margin-bottom: 20px;
+      margin-bottom: 35px;
 
       @media (min-width: $screen-xxl) {
-        margin-bottom: 48px;
+        margin-bottom: 40px;
       }
     }
 
-    .form__fieldset {
+    .form__fieldset-container {
       margin-bottom: 30px;
       padding-bottom: 30px;
       border-bottom: 1px solid $gray-light;
 
       @media (min-width: $screen-xxl) {
         display: grid;
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(3, auto);
         grid-column-gap: $grid-gutter-width;
         grid-row-gap: $grid-gutter-width/2;
-      }
-
-      &:last-child {
-        margin-bottom: 0;
+        padding-bottom: 40px;
       }
 
       &--subscribes {

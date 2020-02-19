@@ -1,0 +1,136 @@
+// В этом файле должны быть стили для БЭМ-блока order-info, его элементов,
+// модификаторов, псевдоселекторов, псевдоэлементов, @media-условий...
+
+@import "../../libraries/variables";
+@import "../../libraries/mixins";
+
+.order-info {
+  $block-name: &; // #{$block-name}__element
+
+  border: 1px solid #eeecef;
+  padding: 20px 15px;
+
+  @media (min-width: $screen-xxl) {
+    padding-top: 25px;
+    padding-bottom: 25px;
+  }
+
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+
+    &-text, &-button {
+      font-size: 14px;
+    }
+
+    &-button {
+      position: relative;
+
+      &::after {
+        @include pseudo;
+        background: $purple;
+        bottom: 0;
+        left: 0;
+        height: 1px;
+        width: 100%;
+      }
+    }
+  }
+
+  &__content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 18px;
+    border-bottom: 1px solid #eeecef;
+    margin-bottom: 20px;
+  }
+
+  &__old-price {
+    font-size: 14px;
+    color: #97a6b5;
+  }
+
+  &__new-price {
+    font-size: 24px;
+    color: #000;
+    font-weight: 700;
+  }
+
+  &__footer {
+    font-size: 14px;
+
+    &-info {
+      display: flex;
+      justify-content: space-between;
+      color: #97a6b5;
+      margin-bottom: 45px;
+
+      b {
+        font-weight: 400;
+        color: $purple;
+      }
+    }
+
+    &-buttons {
+      margin-bottom: 20px;
+    }
+
+    &-button {
+      border-radius: 24px;
+      height: 48px;
+      min-width: 100%;
+      margin-bottom: 24px;
+      font-weight: 400;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+
+      &--checkout {
+        border: 1px solid transparent;
+
+        &:hover {
+          @media (min-width: $screen-xxl) {
+            border-color: $purple;
+            background: $white;
+          }
+        }
+      }
+
+      &--quick-order {
+        border-color: #97a6b5;
+        color: #97a6b5;
+
+        &:hover {
+          @media (min-width: $screen-xxl) {
+            border-color: $purple;
+            color: $white;
+          }
+        }
+      }
+    }
+
+    &-policy {
+      font-size: 12px;
+      color: #97a6b5;
+
+      a {
+        display: inline-block;
+        color: #97a6b5;
+        position: relative;
+
+        &::after {
+          @include pseudo;
+          background: #d8d8d8;
+          bottom: 0;
+          left: 0;
+          height: 1px;
+          width: 100%;
+        }
+      }
+    }
+  }
+}

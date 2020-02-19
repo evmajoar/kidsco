@@ -102,7 +102,7 @@
       }
 
       .form__legend {
-        @include hide-text;
+        display: none;
       }
 
       .field-text__name {

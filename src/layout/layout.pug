@@ -41,11 +41,17 @@ html( class="page", lang=lang )
             div.page__content( class='' + ( !haveSidebar? 'page__content--index' : '' ) )
                 if( haveSidebar )
                     div.page__content-header
-                        h1.page__title= title
-                        +breadcrumbs()
-                    main.page__content-main
+                        if( siteURN === 'order.html' )
+                            div.page__content-wrapper
+                                h1.page__title= title
+                                span.page__text № 777 777
+                        else
+                            h1.page__title= title
+                        if( siteURN !== 'order-succsess.html' )
+                            +breadcrumbs()
+                    main.page__content-main( class=(siteURN === 'order.html' || siteURN === 'order-succsess.html' ? 'page__content-main--direction-rl' : '') )
                         block main
-                    sidebar.page__content-sidebar
+                    sidebar.page__content-sidebar( class=(siteURN === 'order.html' || siteURN === 'order-succsess.html' ? 'page__content-sidebar--direction-rl' : '') )
                         block sidebar
                     block text
                 else

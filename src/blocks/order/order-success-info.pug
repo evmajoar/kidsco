@@ -1,0 +1,38 @@
+//- Все примеси в этом файле должны начинаться c имени блока ( order-success-info )
+
+mixin order-success-info( mods )
+
+    -
+        //- класс блока
+        var className = 'order-success-info';
+
+        //- список модификаторов
+        var allMods = '';
+        if ( typeof mods !== 'undefined' && mods ) {
+            var modsList = mods.split( ',' );
+            for ( var i = 0; i < modsList.length; i++ ) {
+                allMods += ' ' + className + '--' + modsList[i].trim();
+            }
+        }
+
+    div( class=className )
+
+        ul( class=className + '__list' )
+            li( class=className + '__item' )
+                p( class=className + '__item-text' ) Подушка мишка / Бренд: United Colors of Benetton / Цвет: Серо-пепельный / Размер: 50x50 см
+                p( class=className + '__item-info' )
+                    span( class=className + '__item-info-quantity' ) 2 шт.
+                    span( class=className + '__item-info-price' ) 1 980 ₽
+            li( class=className + '__item' )
+                p( class=className + '__item-text' ) Подушка мишка / Бренд: United Colors of Benetton / Цвет: Серо-пепельный / Размер: 50x50 см
+                p( class=className + '__item-info' )
+                    span( class=className + '__item-info-quantity' ) 2 шт.
+                    span( class=className + '__item-info-price' ) 1 980 ₽
+
+        p( class=className + '__info' )
+            span( class=className + '__item-info-quantity' ) Самовывоз из магазина
+            span( class=className + '__item-info-price' ) Бесплатно
+
+        p( class=className + '__total' )
+            span( class=className + '__total-text' ) Итого
+            span( class=className + '__total-price' ) 4 360 ₽

@@ -1,0 +1,34 @@
+//- Все примеси в этом файле должны начинаться c имени блока ( order-success )
+
+mixin order-success( mods )
+
+    -
+        //- класс блока
+        var className = 'order-success';
+
+        //- список модификаторов
+        var allMods = '';
+        if ( typeof mods !== 'undefined' && mods ) {
+            var modsList = mods.split( ',' );
+            for ( var i = 0; i < modsList.length; i++ ) {
+                allMods += ' ' + className + '--' + modsList[i].trim();
+            }
+        }
+
+    section( class=className )
+        p( class=className + '__text' )
+            | Наш представитель свяжется с Вами а течение 30 минут по телефону +7 (999) 999-99-99.
+            | Обработка заказов происходит ежедневно с 08:00 до 20:00 по московскому времени.
+        p( class=className + '__text' )
+            | Наш представитель свяжется с Вами а течение 30 минут по телефону +7 (999) 999-99-99.
+            | Обработка заказов происходит ежедневно с 08:00 до 20:00 по московскому времени.
+        div( class=className + '__help ' + className + '__help--show')
+            span( class=className + '__help-title' ) Самовывоз
+            p( class=className + '__help-wrapper' )
+                span( class=className + '__help-adress' )
+                    | Санкт-Петербург, ул. Кораблестроителей, #[br] д. 31 к2
+                    +button( 'Показать на карте' )( class=className + '__help-button', type='button' )
+                span( class=className + '__help-time' ) С ПН по ПТ с 9:00 до 17:00
+                span( class=className + '__help-info' ) Забрать заказ можно 31 декабря 2019
+            div.map( class=className + '__help-map' )
+                img(src='images/map.jpg', alt='Заглушка-карта')

@@ -1,0 +1,142 @@
+//- Все примеси в этом файле должны начинаться c имени блока ( order-contacts-data )
+
+mixin order-contacts-data( props, isStock, mods )
+
+    -
+        //- класс блока
+        var className = 'order-contacts-data';
+
+        //- список модификаторов
+        var allMods = '';
+        if ( typeof mods !== 'undefined' && mods ) {
+            var modsList = mods.split( ',' );
+            for ( var i = 0; i < modsList.length; i++ ) {
+                allMods += ' ' + className + '--' + modsList[i].trim();
+            }
+        }
+
+    div( class=className + allMods )
+        +form()( class=className + '__form', action='/', method='POST' )
+
+            div.form__wrapper( class=className + '__contacts' )
+                +fieldset( "Контактные данные" )
+                    div.form__fieldset-container
+                        +field-text({
+                            title: 'Телефон*',
+                            mods: 'phone',
+                            attrs: {
+                                type: 'tel',
+                                placeholder: "Телефон"
+                            }
+                        })
+                        +field-text({
+                            title: 'Email*',
+                            attrs: {
+                                type: 'email',
+                                placeholder: "example@mail.com"
+                            }
+                        })
+                        +field-text({
+                            title: 'Имя',
+                            attrs: {
+                                type: 'text',
+                                placeholder: "Имя"
+                            }
+                        })
+
+            div.form__wrapper( class=className + '__delivery' )
+                +fieldset( "Способ доставки" )
+                    div.form__fieldset-container
+                        p.form__field-text-wrapper
+                            span.form__field-text-title Город доставки
+                            +field-text({
+                                title: 'Поиск',
+                                mods: 'search',
+                                attrs: {
+                                    type: 'search',
+                                    placeholder: "Город",
+                                }
+                            })
+                        p.form__field-text-wrapper
+                            span.form__field-text-title Из пунка выдачи
+                            +field-text({
+                                title: 'Самовывоз',
+                                mods: 'radio, checked',
+                                attrs: {
+                                    name: 'delivery',
+                                    type: 'radio',
+                                    'data-name': 'pickup',
+                                    placeholder: "Самовывоз",
+                                    checked: true
+                                }
+                            })
+                        p.form__field-text-wrapper
+                            span.form__field-text-title По России от 490 ₽
+                            +field-text({
+                                title: 'Доставка',
+                                mods: 'radio',
+                                attrs: {
+                                    name: 'delivery',
+                                    type: 'radio',
+                                    'data-name': 'delivery',
+                                    placeholder: "Доставка"
+                                }
+                            })
+                    div( class=className + '__help ' + className + '__help--show')
+                        span( class=className + '__help-title' ) Пункт самовывоза
+                        p( class=className + '__help-wrapper' )
+                            span( class=className + '__help-adress' )
+                                | Санкт-Петербург, ул. Кораблестроителей, #[br] д. 31 к2
+                                +button( 'Показать на карте' )( class=className + '__help-button', type='button' )
+                            span( class=className + '__help-time' ) С ПН по ПТ с 9:00 до 17:00
+                            span( class=className + '__help-info' ) Забрать заказ можно 31 декабря 2019
+                        div.map( class=className + '__help-map' )
+                            img(src='images/map.jpg', alt='Заглушка-карта')
+                    div( class=className + '__comment' )
+                        +field-text({
+                            title: "Комментарии к заказу",
+                            mods: 'textarea',
+                            isTextarea: true,
+                            attrs: {
+                                name: 'comment',
+                                placeholder: 'Написать сообщение'
+                            }
+                        })
+
+            div.form__wrapper( class=className + '__payment' )
+                +fieldset( "Способ оплаты" )
+                    div.form__fieldset-container
+                        p.form__field-text-wrapper
+                            span.form__field-text-title Курьеру / при самовывозе
+                            +field-text({
+                                title: 'Наличными',
+                                mods: 'radio, checked',
+                                attrs: {
+                                    name: 'payment',
+                                    type: 'radio',
+                                    placeholder: "Наличными",
+                                    checked: true
+                                }
+                            })
+                        p.form__field-text-wrapper
+                            span.form__field-text-title Курьеру / при самовывозе
+                            +field-text({
+                                title: 'Банковской картой',
+                                mods: 'radio',
+                                attrs: {
+                                    name: 'payment',
+                                    type: 'radio',
+                                    placeholder: "Банковской картой",
+                                }
+                            })
+                        p.form__field-text-wrapper
+                            span.form__field-text-title Для физических и юридических лиц
+                            +field-text({
+                                title: 'Безналичным платежом',
+                                mods: 'radio',
+                                attrs: {
+                                    name: 'payment',
+                                    type: 'radio',
+                                    placeholder: "Безналичным платежом"
+                                }
+                            })

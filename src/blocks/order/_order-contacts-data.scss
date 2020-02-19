@@ -1,0 +1,261 @@
+// В этом файле должны быть стили для БЭМ-блока order-contacts-data, его элементов,
+// модификаторов, псевдоселекторов, псевдоэлементов, @media-условий...
+
+@import "../../libraries/variables";
+@import "../../libraries/mixins";
+
+.order-contacts-data {
+  $block-name: &; // #{$block-name}__element
+
+  .form__legend {
+    margin-bottom: 15px;
+
+    @media (min-width: $screen-xxl) {
+      margin-bottom: 45px;
+    }
+  }
+
+  .form__wrapper {
+    width: calc( 100% + 30px );
+    margin-left: -15px;
+    padding: 20px 15px 0;
+    border-top: 1px solid #eeecef;
+    
+    &:first-child {
+      border: 0;
+    }
+
+    @media (min-width: $screen-xxl) {
+      padding: 20px 0 45px;
+      margin-left: 0;
+      width: 100%;
+    }
+  }
+
+  .form__fieldset-container {
+    @media (min-width: $screen-xxl) {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-column-gap: $grid-gutter-width;
+    }
+  }
+
+  .form__field-text-title {
+    display: block;
+    font-size: 14px;
+    margin-bottom: 8px;
+  }
+
+  .field-text {
+    margin-bottom: 20px;
+
+    @media (min-width: $screen-xxl) {
+      margin-bottom: 0;
+    }
+  }
+
+  &__delivery, &__payment {
+    .field-text {
+      &--search, &--radio {
+        height: 48px;
+        border: 1px solid $gray;
+        padding: 0 15px;
+      }
+
+      &--search {
+        .field-text__input {
+          padding-bottom: 0;
+          border-bottom: 0;
+          height: 45px;
+        }
+      }
+
+      &--radio {
+        .field-text__input-wrap {
+          margin-left: auto;
+        }
+
+        .field-text__name {
+          color: #97a6b5;
+        }
+      }
+
+      &--checked {
+        background: #eeecef;
+
+        .field-text__name {
+          color: $purple;
+        }
+      }
+
+      &--active {
+        border: 1px solid $purple;
+      }
+    }
+  }
+
+  &__delivery {
+    .form__field-text-wrapper {
+      &:last-child {
+        .field-text {
+          &--radio {
+            margin-bottom: 0;
+          }
+        }
+      }
+    }
+  }
+
+  &__payment {
+    border-bottom: 1px solid #eeecef;
+    margin-bottom: 30px;
+    padding-bottom: 10px !important;
+
+    @media (min-width: $screen-xxl) {
+      padding-bottom: 0 !important;
+      border-bottom: 0;
+      margin-bottom: 0;
+    }
+  }
+
+  &__help {
+    display: none;
+    margin-top: 25px;
+
+    @media (min-width: $screen-xxl) {
+      margin-top: 45px;
+    }
+
+    &-wrapper {
+      @media (min-width: $screen-xxl) {
+        display: grid;
+        grid-template-columns: repeat(2, auto);
+        grid-column-gap: $grid-gutter-width;
+        justify-content: start;
+      }
+    }
+
+    &-title {
+      display: block;
+      font-size: 14px;
+      font-weight: 700;
+      margin-bottom: 7px;
+      color: #000;
+
+      @media (min-width: $screen-xxl) {
+        margin-bottom: 20px;
+      }
+    }
+
+    &-adress {
+      display: block;
+      font-size: 14px;
+      margin-bottom: 20px;
+      color: #000;
+
+      br {
+        display: none;
+
+        @media (min-width: $screen-xxl) {
+          display: block;
+        }
+      }
+
+      @media (min-width: $screen-xxl) {
+        grid-column: 1 / 2;
+        grid-row: 1 / 3;
+        margin-bottom: 0;
+      }
+    }
+
+    &-button {
+      color: #97a6b5;
+      display: inline-block;
+      margin-left: 15px;
+      position: relative;
+
+      &::after {
+        @include pseudo;
+        background: #d8d8d8;
+        bottom: 0;
+        left: 0;
+        height: 1px;
+        width: 100%;
+      }
+    }
+
+    &-time, &-info {
+      display: block;
+      font-size: 14px;
+    }
+
+    &-time {
+      margin-bottom: 10px;
+
+      @media (min-width: $screen-xxl) {
+        margin-bottom: 0;
+      }
+    }
+
+    &-info {
+      margin-bottom: 30px;
+
+      @media (min-width: $screen-xxl) {
+        margin-bottom: 0;
+      }
+    }
+
+    &-map {
+      display: none;
+      width: calc( 100% + 30px );
+      margin-left: -15px;
+      height: 404px;
+
+      @media (min-width: $screen-xxl) {
+        margin-left: 0;
+        width: 100%;
+        height: 540px;
+        margin-top: 45px;
+      }
+
+      img {
+        object-fit: cover;
+        height: 100%;
+      }
+
+      &--show {
+        display: block;
+      }
+    }
+
+    &--show {
+      display: block;
+    }
+  }
+
+  &__comment {
+    margin-top: 30px;
+
+    @media (min-width: $screen-xxl) {
+      margin-top: 45px;
+      max-width: 625px;
+    }
+
+    .field-text {
+      margin-bottom: 30px;
+
+      @media (min-width: $screen-xxl) {
+        margin-bottom: 0;
+      }
+    }
+
+    .field-text__name {
+      color: #000;
+    }
+
+    .field-text__input {
+      padding: 12px 15px 0;
+      height: 128px;
+    }
+  }
+}

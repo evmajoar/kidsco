@@ -1,0 +1,28 @@
+//- Личный кабинет
+
+extends ../../layout/layout.pug
+
+include ../../blocks/order/order-success.pug
+include ../../blocks/order/order-success-info.pug
+
+block meta
+
+    include order-success.data.pug
+
+    title=title + " | " + siteName
+    meta( name="description", content=description )
+    meta( name="keywords", content=keywords )
+
+block append head
+    link( rel="canonical" href=siteURL + siteURN )
+    link( rel="stylesheet" href="styles/order.min.css" )
+
+block main
+    +order-success()
+
+block sidebar
+    +order-success-info()
+
+block append foot
+    script( src="//cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/3.3.4/jquery.inputmask.bundle.min.js" )
+    script( src="scripts/order.min.js" )
